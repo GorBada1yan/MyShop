@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LogInActivity">
 
     <ImageView
         android:id="@+id/applogo"
@@ -18,7 +18,7 @@
         ></ImageView>
 
     <EditText
-        android:id="@+id/login_phone_input"
+        android:id="@+id/login_email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/applogo"
@@ -27,7 +27,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="120dp"
-        android:hint="Номер Телефона"
+        android:hint="Введите адрес электронной почты"
         android:inputType="number"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
@@ -45,7 +45,7 @@
         android:id="@+id/login_password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_phone_input"
+        android:layout_below="@+id/login_email_input"
         android:background="@drawable/input_design"
         android:padding="20dp"
         android:layout_marginRight="20dp"
@@ -104,7 +104,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="15dp"
-        android:text="Имеется аккаунт.    Войти?"
+        android:text="Войти"
         android:textSize="25sp"
         android:textColor="@color/white"
 
