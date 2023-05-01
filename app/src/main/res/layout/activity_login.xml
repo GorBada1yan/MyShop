@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogInActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/applogo"
@@ -115,7 +115,7 @@
         android:id="@+id/admin_panel_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Войти как Администратор"
+        android:text="Войти как Админ"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_below="@id/login_btn"
