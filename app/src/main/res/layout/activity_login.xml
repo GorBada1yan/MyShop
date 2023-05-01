@@ -28,7 +28,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="120dp"
         android:hint="Введите адрес электронной почты"
-        android:inputType="number"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:textSize="20sp"
