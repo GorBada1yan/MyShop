@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "83124159270",
+    "firebase_url": "https://myshop-69d50-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "myshop-69d50",
     "storage_bucket": "myshop-69d50.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:83124159270:android:42cb9c6e63fd4198ab77e7",
+        "mobilesdk_app_id": "1:83124159270:android:f7660ade51918954ab77e7",
         "android_client_info": {
           "package_name": "com.example.myshop"
         }
