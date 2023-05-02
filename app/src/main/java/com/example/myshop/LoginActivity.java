@@ -27,10 +27,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private TextView AdminLink, NotAdminLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         loginEmailEditText = findViewById(R.id.login_email_input);
         loginPasswordEditText = findViewById(R.id.login_password_input);
@@ -55,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginButton.setText("Войти как Администратор");
                 adminPanelTextView.setVisibility(View.INVISIBLE);
                 notAdminPanelTextView.setVisibility(View.VISIBLE);
+                
             }
         });
 
@@ -98,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginActivity.this, "Вход выполнен", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
