@@ -3,6 +3,7 @@ package com.example.myshop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference users;
     private FirebaseAuth mAuth;
     private CheckBox checkBoxRememberMe;
+    private ProgressDialog loadingBar;
 
 
 
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         joinButton = (Button) findViewById(R.id.main_join_btn);
         loginButton = (Button) findViewById(R.id.main_login_btn);
+
+        loadingBar = new ProgressDialog(this);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,30 +75,43 @@ public class MainActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
                 if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
                     loginUser(UserEmailKey, UserPasswordKey);
-                    
+
                 }
             }
 
     }
 
     private void loginUser(final String email,final String password) {
+        loadingBar.setTitle("Вход");
+        loadingBar.setMessage("Подождите, пока мы проверяем учетную запись...");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
 
 
 
         mAuth.signInWithEmailAndPassword(email, password)
+
+
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Вход выполнен", Toast.LENGTH_SHORT).show();
 
-
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
+                            loadingBar.dismiss();
                         } else {
                             Toast.makeText(MainActivity.this, "Ошибка входа: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
                         }
                     }
                 });
