@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
+
 
         Paper.init(this);
 
@@ -65,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
             String UserEmailKey = Paper.book().read(Prevalent.UserEmailKey);
             String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
-            if (UserEmailKey!="" && UserPasswordKey != " "){
-                if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey) ){
+            if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
+                if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
                     loginUser(UserEmailKey, UserPasswordKey);
                     
                 }
