@@ -2,6 +2,7 @@ package com.example.myshop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -26,14 +27,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+
+
+
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth = FirebaseAuth.getInstance();
 
+
+
+
+        mAuth = FirebaseAuth.getInstance();
         mUsername = findViewById(R.id.register_username_input);
         mEmail = findViewById(R.id.register_email_input);
         mPassword = findViewById(R.id.register_password_input);
@@ -67,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Регистрация прошла успешно", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                     finish();
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Регистрация не удалась: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -76,6 +85,12 @@ public class RegisterActivity extends AppCompatActivity {
                         });
             }
         });
+
+
+
     }
+
+
+
 }
 

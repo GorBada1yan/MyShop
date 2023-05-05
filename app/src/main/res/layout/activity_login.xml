@@ -111,34 +111,34 @@
         android:backgroundTint="@color/primary"></Button>
 
 
-    <TextView
-        android:id="@+id/admin_panel_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Войти как Админ"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_below="@id/login_btn"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/white"
-        android:layout_marginEnd="30dp"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/admin_panel_link"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Войти как Админ"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_below="@id/login_btn"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        />-->
 
-    <TextView
-        android:id="@+id/not_admin_panel_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login_btn"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="Войти как Ползователь"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+<!--    <TextView-->
+<!--        android:id="@+id/not_admin_panel_link"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/login_btn"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_marginStart="29dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:text="Войти как Ползователь"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="invisible" />-->
 
 
 </RelativeLayout>
