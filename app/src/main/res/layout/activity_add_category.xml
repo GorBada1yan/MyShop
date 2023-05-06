@@ -53,7 +53,7 @@
 
             />
         <ImageView
-        android:id="@+id/moto"
+        android:id="@+id/bicycle"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/moto"
@@ -102,7 +102,7 @@
 
             />
         <ImageView
-            android:id="@+id/sweather"
+            android:id="@+id/clothes"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/sweather"
@@ -190,10 +190,10 @@
 
             />
         <ImageView
-            android:id="@+id/collections"
+            android:id="@+id/music"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/collection"
+            android:src="@drawable/music"
             android:layout_margin="10dp"
 
 
