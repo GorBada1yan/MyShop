@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyShop"
         tools:targetApi="31">
         <activity
+            android:name=".AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddCategoryActivity"
             android:exported="false" />
         <activity
@@ -23,10 +29,7 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.RegisterActivity"
-            android:exported="false"
-            android:label="@string/title_activity_register" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

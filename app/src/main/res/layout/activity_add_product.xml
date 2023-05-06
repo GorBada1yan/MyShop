@@ -8,8 +8,8 @@
     tools:context=".AddCategoryActivity">
 
 
-    
-    
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,8 +21,8 @@
         android:padding="20dp"
         android:id="@+id/slogan"
         />
-    
-    
+
+
     <LinearLayout
         android:id="@+id/first_line"
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
         android:layout_below="@+id/slogan"
         android:layout_marginTop="20dp"
         android:gravity="center">
-        
-        
+
+
         <ImageView
             android:id="@+id/car"
             android:layout_width="80dp"
@@ -53,14 +53,14 @@
 
             />
         <ImageView
-        android:id="@+id/bicycle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/moto"
-        android:layout_margin="10dp"
+            android:id="@+id/bicycle"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/moto"
+            android:layout_margin="10dp"
 
 
-        /><ImageView
+            /><ImageView
         android:id="@+id/service"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -111,12 +111,12 @@
 
             />
         <ImageView
-        android:id="@+id/accessories"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/accessories"
-        android:layout_margin="10dp"
-        />
+            android:id="@+id/accessories"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/accessories"
+            android:layout_margin="10dp"
+            />
 
     </LinearLayout>
 
@@ -216,7 +216,4 @@
             />
 
     </LinearLayout>
-
-
-
 </RelativeLayout>
