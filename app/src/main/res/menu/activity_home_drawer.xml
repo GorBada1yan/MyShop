@@ -9,6 +9,10 @@
             android:icon="@drawable/cart"
             android:title="Карзина" />
         <item
+            android:id="@+id/add"
+            android:icon="@drawable/add"
+            android:title="Проодать товар" />
+        <item
             android:id="@+id/categories"
             android:icon="@drawable/category"
             android:title="Категории"/>
