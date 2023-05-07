@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/car"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/car"
             android:layout_margin="10dp"
 
@@ -45,8 +45,8 @@
             />
         <ImageView
             android:id="@+id/boat"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/boat"
             android:layout_margin="10dp"
 
@@ -54,16 +54,16 @@
             />
         <ImageView
             android:id="@+id/bicycle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/moto"
             android:layout_margin="10dp"
 
 
             /><ImageView
         android:id="@+id/service"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@drawable/service"
         android:layout_margin="10dp"
         />
@@ -84,8 +84,8 @@
 
         <ImageView
             android:id="@+id/dress"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/dress"
             android:layout_margin="10dp"
 
@@ -94,8 +94,8 @@
             />
         <ImageView
             android:id="@+id/shoes"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/shoes"
             android:layout_margin="10dp"
 
@@ -103,8 +103,8 @@
             />
         <ImageView
             android:id="@+id/clothes"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/sweather"
             android:layout_margin="10dp"
 
@@ -112,8 +112,8 @@
             />
         <ImageView
             android:id="@+id/accessories"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/accessories"
             android:layout_margin="10dp"
             />
@@ -133,8 +133,8 @@
 
         <ImageView
             android:id="@+id/phone"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/phone"
             android:layout_margin="10dp"
 
@@ -143,8 +143,8 @@
             />
         <ImageView
             android:id="@+id/pc"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/computer"
             android:layout_margin="10dp"
 
@@ -152,8 +152,8 @@
             />
         <ImageView
             android:id="@+id/headphones"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/headphones"
             android:layout_margin="10dp"
 
@@ -161,8 +161,8 @@
             />
         <ImageView
             android:id="@+id/fridge"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/fridge"
             android:layout_margin="10dp"
             />
@@ -181,8 +181,8 @@
 
         <ImageView
             android:id="@+id/books"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/books"
             android:layout_margin="10dp"
 
@@ -191,8 +191,8 @@
             />
         <ImageView
             android:id="@+id/music"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/music"
             android:layout_margin="10dp"
 
@@ -200,8 +200,8 @@
             />
         <ImageView
             android:id="@+id/sport"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/sport"
             android:layout_margin="10dp"
 
@@ -209,8 +209,8 @@
             />
         <ImageView
             android:id="@+id/guitar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/guitar"
             android:layout_margin="10dp"
             />
