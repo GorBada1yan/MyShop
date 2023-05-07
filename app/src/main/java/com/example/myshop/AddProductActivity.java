@@ -167,8 +167,8 @@ public class AddProductActivity extends AppCompatActivity {
                             loadingBar.dismiss();
                             Toast.makeText(AddProductActivity.this, "Товар добавлен", Toast.LENGTH_SHORT).show();
 
-                            Intent loginIntent = new Intent(AddProductActivity.this, HomeActivity.class);
-                            startActivity(loginIntent);
+                            Intent addedIntent = new Intent(AddProductActivity.this, HomeActivity.class);
+                            startActivity(addedIntent);
                         }
                         else {
                             String message = task.getException().toString();
