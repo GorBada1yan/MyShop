@@ -16,20 +16,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mUsername;
     private EditText mEmail;
     private EditText mPassword;
+    private EditText mPhone;
     private Button mRegisterButton;
 
     private FirebaseAuth mAuth;
-
-
-
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,12 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-
-
-
         mAuth = FirebaseAuth.getInstance();
         mUsername = findViewById(R.id.register_username_input);
+        mPhone = findViewById(R.id.register_phone_input);
         mEmail = findViewById(R.id.register_email_input);
         mPassword = findViewById(R.id.register_password_input);
         mRegisterButton = findViewById(R.id.register_btn);
@@ -53,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = mUsername.getText().toString().trim();
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
+                String phone = mPhone.getText().toString().trim();
 
                 if (TextUtils.isEmpty(username)) {
                     mUsername.setError("Имя пользователя обязательно");
@@ -68,15 +63,34 @@ public class RegisterActivity extends AppCompatActivity {
                     mPassword.setError("Пароль обязателен");
                     return;
                 }
+                if (TextUtils.isEmpty(phone)) {
+                    mUsername.setError("Номер телефона обязателен");
+                    return;
+                }
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this, "Регистрация прошла успешно", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                    finish();
+                                    // Send verification email
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    if (user != null) {
+                                        user.sendEmailVerification()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(RegisterActivity.this, "Проверьте свой электронный адрес, чтобы подтвердить свою учетную запись", Toast.LENGTH_LONG).show();
+                                                            mAuth.signOut();
+                                                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                            finish();
+                                                        } else {
+                                                            Toast.makeText(RegisterActivity.this, "Не удалось отправить письмо с подтверждением по электронной почте", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+                                    }
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Регистрация не удалась: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
@@ -84,12 +98,5 @@ public class RegisterActivity extends AppCompatActivity {
                         });
             }
         });
-
-
-
     }
-
-
-
 }
-

@@ -36,10 +36,28 @@
         android:textSize="20sp"></EditText>
 
     <EditText
-        android:id="@+id/register_email_input"
+        android:id="@+id/register_phone_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/register_username_input"
+        android:background="@drawable/input_design"
+        android:padding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:hint="Намер телефона "
+        android:inputType="phone"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        style="@style/TextAppearance.Material3.BodyLarge"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/register_email_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_phone_input"
         android:background="@drawable/input_design"
         android:padding="20dp"
         android:layout_marginRight="20dp"

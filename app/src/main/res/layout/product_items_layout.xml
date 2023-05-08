@@ -31,6 +31,7 @@
             android:layout_below="@+id/product_name"
             android:scaleType="centerCrop"
             android:layout_marginTop="2dp"
+            android:onClick="onProductImageClick"
             />
 
         <TextView

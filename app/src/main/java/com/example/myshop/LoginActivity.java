@@ -117,19 +117,25 @@ private MaterialCheckBox checkBoxRememberMe;
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Вход выполнен", Toast.LENGTH_SHORT).show();
 
-                            // Если пользователь выбрал "Запомнить меня", сохраняем его email и пароль в SharedPreferences
-                            if (isChecked) {
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("email", email);
-                                editor.putString("password", password);
-                                editor.apply();
+                            if (user.isEmailVerified()) {
+                                Toast.makeText(LoginActivity.this, "Вход выполнен", Toast.LENGTH_SHORT).show();
+
+                                // Если пользователь выбрал "Запомнить меня", сохраняем его email и пароль в SharedPreferences
+                                if (isChecked) {
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putString("email", email);
+                                    editor.putString("password", password);
+                                    editor.apply();
+                                }
+
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Подтвердите свой email, чтобы войти в аккаунт", Toast.LENGTH_SHORT).show();
+                                mAuth.signOut();
                             }
-
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                            finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Ошибка входа: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
