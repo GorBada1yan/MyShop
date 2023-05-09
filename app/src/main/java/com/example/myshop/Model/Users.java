@@ -1,17 +1,18 @@
 package com.example.myshop.Model;
 
 public class Users {
-    private String name, email, password;
+    private String name, email, password, phone;
 
     public Users(){
 
     }
 
 
-    public Users(String name, String email, String password) {
+    public Users(String name, String email, String password, String phone) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.phone = phone;
     }
 
 
@@ -34,8 +35,16 @@ public class Users {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
 }
