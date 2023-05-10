@@ -12,7 +12,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SettingsActivity extends AppCompatActivity {
     private TextView add_settings;
     private CircleImageView account_image;
-    private TextView fullname, close, email, phone;
+    private TextView fullname,  email, phone;
+    private TextView close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +25,6 @@ public class SettingsActivity extends AppCompatActivity {
         email = findViewById(R.id.email_settings);
         phone=findViewById(R.id.phone_settings);
         account_image=findViewById(R.id.account_image_settings);
-
-
-
-
-
 
 
 

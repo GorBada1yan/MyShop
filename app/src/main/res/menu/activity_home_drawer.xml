@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/settings"
+            android:icon="@drawable/profilelogo"
+            android:title="Профиль" />
+        <item
             android:id="@+id/cart"
             android:icon="@drawable/cart"
             android:title="Карзина" />
@@ -16,10 +20,7 @@
             android:id="@+id/categories"
             android:icon="@drawable/category"
             android:title="Категории"/>
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/settings"
-            android:title="Настройки" />
+
         <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
