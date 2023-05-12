@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,6 +37,9 @@ public class InfoProdActivity extends AppCompatActivity {
         info_name.setText(productName);
         info_description.setText(productDescription);
         info_price.setText(productPrice);
+        String imageUriString = intent.getStringExtra("imageUri");
+        Uri imageUri = Uri.parse(imageUriString);
+        info_photo.setImageURI(imageUri);
 
         info_back.setOnClickListener(new View.OnClickListener() {
             @Override

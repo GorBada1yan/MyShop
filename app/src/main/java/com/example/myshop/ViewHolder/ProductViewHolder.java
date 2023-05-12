@@ -1,6 +1,11 @@
 package com.example.myshop.ViewHolder;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,10 +41,12 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
     @Override
     public void onClick(View view) {
         if (view.getId() == imageView.getId()) {
+            Uri imageUri = getImageUri();
             Intent intent = new Intent(view.getContext(), InfoProdActivity.class);
             intent.putExtra("productName", txtProductName.getText().toString());
             intent.putExtra("productDescription", txtProductDescription.getText().toString());
             intent.putExtra("productPrice", txtProductPrice.getText().toString());
+            intent.putExtra("imageUri", imageUri.toString());
 
             view.getContext().startActivity(intent);
 
@@ -49,5 +56,12 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
 
             listner.onClick(view, getAdapterPosition(), false);
         }
+    }
+    private Uri getImageUri() {
+        // Получаем URI изображения
+        Drawable drawable = imageView.getDrawable();
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        String path = MediaStore.Images.Media.insertImage(itemView.getContext().getContentResolver(), bitmap, "Image", null);
+        return Uri.parse(path);
     }
 }

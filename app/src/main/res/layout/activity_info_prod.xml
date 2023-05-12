@@ -48,11 +48,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/Info_Bar"/>
+
+
     <ImageView
         android:id="@+id/info_photo"
+        android:layout_margin="10dp"
+        android:layout_marginTop="0dp"
         android:layout_below="@+id/info_price"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
 
         />
     <TextView
@@ -61,22 +65,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/info_photo"
         android:background="@drawable/add_design"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:text="Описание товара"
         android:padding="10dp"
         />
 
     <TextView
         android:id="@+id/info_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/Info_Bar"
-        android:text="Название продукта"
-        android:textStyle="bold"
-        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:padding="20dp"
-        />
+        android:text="Название продукта"
+        android:textSize="20sp"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/info_price"
         android:layout_width="wrap_content"
@@ -87,6 +94,8 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_below="@+id/info_name"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         />
 
     <TextView
@@ -98,6 +107,8 @@
         android:background="@drawable/add_design"
         android:padding="10dp"
         android:text="Contacts"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
 
         />
 
