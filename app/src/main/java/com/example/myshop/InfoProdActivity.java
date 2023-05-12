@@ -2,6 +2,7 @@ package com.example.myshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class InfoProdActivity extends AppCompatActivity {
     private TextView info_back, info_add_favorite, info_description, info_name ,info_price,info_contacts;
     private ImageView info_photo;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,16 @@ public class InfoProdActivity extends AppCompatActivity {
         info_price = findViewById(R.id.info_price);
         info_contacts = findViewById(R.id.info_contacts);
         info_photo = findViewById(R.id.info_photo)  ;
+
+        Intent intent = getIntent();
+        String productName = intent.getStringExtra("productName");
+        String productDescription = intent.getStringExtra("productDescription");
+        String productPrice = intent.getStringExtra("productPrice");
+
+
+        info_name.setText(productName);
+        info_description.setText(productDescription);
+        info_price.setText(productPrice);
 
         info_back.setOnClickListener(new View.OnClickListener() {
             @Override

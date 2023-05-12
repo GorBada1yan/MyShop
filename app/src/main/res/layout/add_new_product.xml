@@ -23,24 +23,24 @@
         android:src="@drawable/select_product_image"
         />
 
-    <EditText
-        android:id="@+id/product_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/select_product_image"
-        android:layout_marginTop="20dp"
-        android:hint="Название товара / услуги"
-        android:padding="20dp"
-        android:background="@drawable/add_design"
-        android:inputType="textMultiLine"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+
+        <EditText
+            android:id="@+id/product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/select_product_image"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/add_design"
+            android:hint="Название товара / услуги"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
 
 
-        ></EditText>
+            ></EditText>
 
-
-    <EditText
+        <EditText
         android:id="@+id/product_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,9 +55,24 @@
 
 
         ></EditText>
+        <EditText
+            android:id="@+id/product_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Кантакты для связи"
+            android:padding="20dp"
+            android:background="@drawable/add_design"
+            android:inputType="textMultiLine"
 
 
-    <EditText
+            ></EditText>
+
+
+        <EditText
         android:id="@+id/product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,22 +92,19 @@
             android:id="@+id/btn_add_new_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_below="@id/product_contact"
             android:layout_marginLeft="20dp"
-            android:layout_below="@id/product_price"
-            android:layout_marginTop="20dp"
-            android:text="Добавить товар"
-            android:padding="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="#a3083c"
+            android:padding="20dp"
+            android:text="Добавить товар"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
 
 
-
-
             ></Button>
-
 
 
     </RelativeLayout>

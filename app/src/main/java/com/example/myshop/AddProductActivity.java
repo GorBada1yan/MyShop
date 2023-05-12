@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -33,10 +34,10 @@ import java.util.HashMap;
 
 public class AddProductActivity extends AppCompatActivity {
 
-    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey;
+    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Contacts;
     private String downloadImageUrl;
     private ImageView productImage;
-    private EditText productName, productDescription, productPrice;
+    private EditText productName, productDescription, productPrice, product_contact;
     private Button addNewProductButton;
     private static final int GALLERYPICK = 1;
     private Uri ImageUri;
@@ -70,6 +71,7 @@ public class AddProductActivity extends AppCompatActivity {
         Description = productDescription.getText().toString();
         Price = productPrice.getText().toString();
         Pname = productName.getText().toString();
+        Contacts = product_contact.getText().toString();
 
         if(ImageUri == null){
             Toast.makeText(this, "Добавьте изображение товара.", Toast.LENGTH_SHORT).show();
@@ -82,10 +84,12 @@ public class AddProductActivity extends AppCompatActivity {
         }
         else if(TextUtils.isEmpty(Pname)){
             Toast.makeText(this, "Добавьте название товара.", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        }else if(TextUtils.isEmpty(Contacts)){
+            Toast.makeText(this, "Добавьте контакты для связи", Toast.LENGTH_SHORT).show();
+        }else {
             StoreProductInformation();
         }
+
     }
 
     private void StoreProductInformation() {
@@ -157,6 +161,7 @@ public class AddProductActivity extends AppCompatActivity {
         productMap.put("category", categoryName);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
+        productMap.put("contacts", Contacts);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -204,6 +209,7 @@ public class AddProductActivity extends AppCompatActivity {
     private void init() {
         categoryName = getIntent().getExtras().get("category").toString();
         productImage = findViewById(R.id.select_product_image);
+        product_contact = findViewById(R.id.product_contact);
         productName = findViewById(R.id.product_name);
         productDescription = findViewById(R.id.product_description);
         productPrice = findViewById(R.id.product_price);

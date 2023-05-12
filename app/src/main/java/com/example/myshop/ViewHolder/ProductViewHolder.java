@@ -36,11 +36,15 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
     @Override
     public void onClick(View view) {
         if (view.getId() == imageView.getId()) {
-
             Intent intent = new Intent(view.getContext(), InfoProdActivity.class);
-
+            intent.putExtra("productName", txtProductName.getText().toString());
+            intent.putExtra("productDescription", txtProductDescription.getText().toString());
+            intent.putExtra("productPrice", txtProductPrice.getText().toString());
 
             view.getContext().startActivity(intent);
+
+
+
         } else {
 
             listner.onClick(view, getAdapterPosition(), false);

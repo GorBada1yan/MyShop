@@ -1,12 +1,12 @@
 package com.example.myshop;
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time;
+    private String pname, description, price, image, category, pid, date, time, contacts;
     public Products(){
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String contacts) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -15,6 +15,7 @@ public class Products {
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.contacts = contacts;
     }
 
     public String getPname() {
@@ -79,5 +80,11 @@ public class Products {
 
     public void setTime(String time) {
         this.time = time;
+    }
+    public String getContacts() {
+        return contacts;
+    }
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
     }
 }
