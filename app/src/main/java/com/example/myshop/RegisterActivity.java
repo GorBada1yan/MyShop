@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEmail;
     private EditText mPassword;
     private EditText mPhone;
+    private EditText passcheck;
     private Button mRegisterButton;
 
     private FirebaseAuth mAuth;
@@ -44,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.register_email_input);
         mPassword = findViewById(R.id.register_password_input);
         mRegisterButton = findViewById(R.id.register_btn);
+        passcheck = findViewById(R.id.register_password_check);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
 
@@ -54,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
+                String check = passcheck.getText().toString().trim();
+
 
 
                 if (TextUtils.isEmpty(username)) {
@@ -71,8 +75,14 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(phone)) {
-                    mUsername.setError("Номер телефона обязателен");
+                    mPhone.setError("Номер телефона обязателен");
                     return;
+                }
+                if (TextUtils.isEmpty(check)){
+                    passcheck.setError("Введите пароль повторно");
+                }
+                if (check != password){
+                    passcheck.setError("Введенные пароли должны быть одинаковыми ");
                 }
 
                 mAuth.createUserWithEmailAndPassword(email, password)

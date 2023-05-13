@@ -201,7 +201,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         } else if(id == R.id.logout){
             Paper.book().destroy();
-            Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(loginIntent);
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);

@@ -1,5 +1,6 @@
 package com.example.myshop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ private MaterialCheckBox checkBoxRememberMe;
     private SharedPreferences preferences;
     private boolean isChecked = false;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,6 @@ private MaterialCheckBox checkBoxRememberMe;
         loginPasswordEditText = findViewById(R.id.login_password_input);
         loginButton = findViewById(R.id.login_btn);
         checkBoxRememberMe = findViewById(R.id.login_checkbox);
-        forgetPasswordTextView = findViewById(R.id.forget_password_link);
         Paper.init(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -79,12 +80,7 @@ private MaterialCheckBox checkBoxRememberMe;
             }
         });
 
-        forgetPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO: Implement forget password functionality
-            }
-        });
+
     }
 
     private void loginUser() {

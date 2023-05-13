@@ -20,4 +20,26 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+
+    <string-array name="category_spinner1">
+        <item>Выберите категорию продукта</item>
+        <item>Процессор</item>
+        <item>Материнская плата </item>
+        <item> Система охлаждения процессора</item>
+        <item>Оперативная память</item>
+        <item>Видеокарта</item>
+        <item>Устройство хранения данных</item>
+        <item>Корпус</item>
+        <item>Блок питания </item>
+        <item>Ноутбук </item>
+        <item> Персональный компютер </item>
+    </string-array>
+
+
+    <string-array name="category_spinner2">
+        <item> выберите</item>
+        <item>Продукт новый</item>
+        <item>Продуке БУ</item>
+    </string-array>
 </resources>

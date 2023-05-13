@@ -4,4 +4,6 @@
     <color name="green">#03fc39</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="hint">#2f3c40</color>
+    <color name="imputback">#fdfff5</color>
 </resources>
