@@ -83,11 +83,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                     String photoUrl = snapshot.child("photoUrl").getValue(String.class);
                     String displayName = snapshot.child("name").getValue(String.class);
+                    if (photoUrl !=null){
 
                     // Загружаем изображение пользователя в ImageView
-                    Picasso.get().load(photoUrl).into(userProfileImage);
+                    Picasso.get().load(photoUrl).into(userProfileImage);}
 
                     // Устанавливаем имя пользователя в TextView
                     username.setText(displayName);
