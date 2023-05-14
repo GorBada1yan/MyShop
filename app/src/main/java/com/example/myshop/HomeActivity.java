@@ -194,6 +194,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(addIntent);
 
         } else if(id == R.id.categories){
+            Intent catIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
+            startActivity(catIntent);
 
         } else if(id == R.id.settings){
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);

@@ -23,23 +23,88 @@
 
 
     <string-array name="category_spinner1">
-        <item>Выберите категорию продукта</item>
-        <item>Процессор</item>
-        <item>Материнская плата </item>
-        <item> Система охлаждения процессора</item>
-        <item>Оперативная память</item>
-        <item>Видеокарта</item>
-        <item>Устройство хранения данных</item>
-        <item>Корпус</item>
-        <item>Блок питания </item>
-        <item>Ноутбук </item>
-        <item> Персональный компютер </item>
+        <item>выберите</item>
+        <item>Здается в аренду</item>
+        <item>Продается</item>
     </string-array>
 
 
     <string-array name="category_spinner2">
         <item> выберите</item>
-        <item>Продукт новый</item>
-        <item>Продуке БУ</item>
+        <item>Камерческий транспорт</item>
+        <item>Личный транспорт</item>
     </string-array>
+
+    <string-array name="category_spinner_comerch">
+        <item> выберите</item>
+        <item>Грузовик</item>
+        <item>Автобус</item>
+        <item>Сельскохозяйственный транспорт</item>
+        <item>Строительская и тяжолая техника</item>
+
+    </string-array>
+
+    <string-array name="category_spinner_lich">
+        <item> выберите</item>
+        <item>Автомобили</item>
+        <item>Мотоциклы</item>
+        <item>Велосипеды</item>
+        <item>Мопеды</item>
+    </string-array>
+
+
+
+
+    <string-array name="category_spinner_bus">
+        <item> выберите</item>
+        <item>Городской автобус</item>
+        <item>Междугородный автобус</item>
+        <item>Микроавтобус</item>
+        <item>Школьный автобус</item>
+        <item> Вахтовый автобус</item>
+        <item>Туристический  автобус</item>
+    </string-array>
+    <string-array name="category_spinner_gruz">
+        <item> выберите</item>
+        <item>Транспортировщик животных</item>
+        <item>Тент</item>
+        <item>Автовоз</item>
+        <item>Уборочная машина</item>
+        <item>Самосвал</item>
+        <item>Бензовоз</item>
+        <item>Другое</item>
+
+    </string-array>
+
+    <string-array name="category_spinner_selxoz">
+        <item> выберите</item>
+        <item>Колесный трактор </item>
+        <item>Гусеничный трактор</item>
+        <item>Комбайн</item>
+        <item>Сеялка </item>
+        <item>Загрузчик сухих кормов</item>
+        <item>Харвестер</item>
+        <item>Другое</item>
+
+
+
+    </string-array>
+
+    <string-array name="category_spinner_stroi">
+        <item> выберите</item>
+        <item>Самосвал</item>
+        <item>Кран </item>
+        <item>Экскаватор</item>
+        <item>Бульдозер </item>
+        <item>Погрузчик</item>
+        <item>Тягач</item>
+        <item>Другое</item>
+
+
+
+    </string-array>
+
+
+
+
 </resources>
