@@ -76,6 +76,29 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_stroi.setAdapter(adapterstroi);
 
 
+        category_spinner_auto = findViewById(R.id.category_spinner_auto);
+        ArrayAdapter<CharSequence> adapterauto = ArrayAdapter.createFromResource(this, R.array.category_spinner_auto, android.R.layout.simple_spinner_item);
+        adapterauto.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category_spinner_auto.setAdapter(adapterauto);
+
+        category_spinner_velosiped = findViewById(R.id.category_spinner_velosiped);
+        ArrayAdapter<CharSequence> adaptervelosiped = ArrayAdapter.createFromResource(this, R.array.category_spinner_velosiped, android.R.layout.simple_spinner_item);
+        adaptervelosiped.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category_spinner_velosiped.setAdapter(adaptervelosiped);
+
+        category_spinner_moped = findViewById(R.id.category_spinner_moped);
+        ArrayAdapter<CharSequence> adaptermoped = ArrayAdapter.createFromResource(this, R.array.category_spinner_moped, android.R.layout.simple_spinner_item);
+        adaptermoped.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category_spinner_moped.setAdapter(adaptermoped);
+
+
+        category_spinner_moto = findViewById(R.id.category_spinner_moto);
+        ArrayAdapter<CharSequence> adaptermoto = ArrayAdapter.createFromResource(this, R.array.category_spinner_moto, android.R.layout.simple_spinner_item);
+        adaptermoto.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category_spinner_moto.setAdapter(adaptermoto);
+
+
+
 
         back_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +128,7 @@ public class ProductAddActivity extends AppCompatActivity {
                 if (selectedItem.equals("Камерческий транспорт")){
                     category_spinner_comerch.setVisibility(View.VISIBLE);
                 }else  category_spinner_comerch.setVisibility(View.INVISIBLE);
-                    if (selectedItem.equals( "Личный транспорт")){
+                if (selectedItem.equals("Личный транспорт")){
                     category_spinner_lich.setVisibility(View.VISIBLE);
                 }else category_spinner_lich.setVisibility(View.INVISIBLE);
 
@@ -136,6 +159,32 @@ public class ProductAddActivity extends AppCompatActivity {
                 }else category_spinner_stroi.setVisibility(View.INVISIBLE);
 
 
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        category_spinner_lich.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                if (selectedItem.equals("Автомобили"))
+                    category_spinner_auto.setVisibility(View.VISIBLE);
+                else category_spinner_auto.setVisibility(View.INVISIBLE);
+                if (selectedItem.equals("Мотоциклы"))
+                    category_spinner_moto.setVisibility(View.VISIBLE);
+                else category_spinner_moto.setVisibility(View.INVISIBLE);
+                if (selectedItem.equals("Велосипеды"))
+                    category_spinner_velosiped.setVisibility(View.VISIBLE);
+                else category_spinner_velosiped.setVisibility(View.INVISIBLE);
+                if (selectedItem.equals("Мопеды"))
+                    category_spinner_moped.setVisibility(View.VISIBLE);
+                else category_spinner_moped.setVisibility(View.INVISIBLE);
 
             }
 

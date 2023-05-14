@@ -105,6 +105,54 @@
     </string-array>
 
 
+    // Личный транспорт
+
+    <string-array name="category_spinner_auto">
+        <item> выберите</item>
+        <item>Седан</item>
+        <item>Универсал </item>
+        <item>Хэтчбек</item>
+        <item>Лифтбек </item>
+        <item>Купе</item>
+        <item>Лимузин</item>
+        <item>Кабриолет</item>
+        <item>Другое</item>
+
+
+
+    </string-array>
+    <string-array name="category_spinner_velosiped">
+        <item> выберите</item>
+        <item>Дорожный (городской)</item>
+        <item>Шоссейный </item>
+        <item>Туринговый</item>
+        <item>Лифтбек </item>
+        <item>Горный</item>
+        <item>Фэтбайк</item>
+        <item>Гибрид</item>
+        <item>Циклокроссовый</item>
+        <item>Электровелосипед</item>
+        <item>Другое</item>
+    </string-array>
+
+    <string-array name="category_spinner_moto">
+        <item> выберите</item>
+        <item>Классический (дорожный)</item>
+        <item>Туристический (турер) </item>
+        <item>Спортивный (гоночный)</item>
+        <item>Кроссовый (эндуро) </item>
+        <item>Чоппер</item>
+        <item>Другое</item>
+    </string-array>
+
+    <string-array name="category_spinner_moped">
+        <item> выберите</item>
+        <item>Классический </item>
+        <item>Мокик</item>
+        <item>Скутер</item>
+        <item>Мопед с коробкой передач</item>
+        <item>Другое</item>
+    </string-array>
 
 
 </resources>
