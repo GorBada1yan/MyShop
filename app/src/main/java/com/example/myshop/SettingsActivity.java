@@ -26,20 +26,30 @@ import com.google.firebase.storage.StorageReference;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
-    private TextView add_settings;
+
     private CircleImageView account_image;
-    private TextView fullname, close, semail, sphone;
+    private TextView fullname, semail, sphone;
+    private TextView editProfile, close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        add_settings=findViewById(R.id.add_setting);
+
         fullname=findViewById(R.id.fullname_settings);
         close=findViewById(R.id.close_setting);
         semail = findViewById(R.id.email_settings);
         sphone=findViewById(R.id.phone_settings);
         account_image=findViewById(R.id.account_image_settings);
+        editProfile = findViewById(R.id.edit_settings);
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editIntent = new Intent(SettingsActivity.this, ProfileEditActivity.class);
+                startActivity(editIntent);
+            }
+        });
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
@@ -120,56 +130,11 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        add_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addSettingsIntent = new Intent(SettingsActivity.this, AddCategoryActivity.class);
-                startActivity(addSettingsIntent);
-            }
-        });
 
-        account_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, 1);
-            }
-        });
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            account_image.setImageURI(selectedImage);
 
-            // Get the current user from the database
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
 
-            // Save the image URI in the database
-            userRef.child("imageUri").setValue(selectedImage.toString());
-
-            // Save the image in Firebase Storage and update the download URL in the database
-            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("users").child(currentUser.getUid()).child("profile.jpg");
-            storageRef.putFile(selectedImage)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        // Get the download URL and update it in the database
-                        storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                            userRef.child("photoUrl").setValue(uri.toString());
-
-                            // Update the profile image in the app with the downloaded image
-                            Glide.with(SettingsActivity.this)
-                                    .load(uri.toString())
-                                    .into(account_image);
-                        });
-                    })
-                    .addOnFailureListener(e -> {
-                        // Handle the error
-                    });
-        }
     }
 
 }

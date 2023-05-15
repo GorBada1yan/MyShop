@@ -53,8 +53,6 @@
     </string-array>
 
 
-
-
     <string-array name="category_spinner_bus">
         <item>*</item>
         <item>Городской автобус </item>
@@ -87,7 +85,6 @@
         <item> Другое</item>
 
 
-
     </string-array>
 
     <string-array name="category_spinner_stroi">
@@ -99,7 +96,6 @@
         <item>Погрузчик </item>
         <item>Тягач </item>
         <item>Другое </item>
-
 
 
     </string-array>
@@ -117,7 +113,6 @@
         <item>Лимузин </item>
         <item>Кабриолет </item>
         <item>Другое </item>
-
 
 
     </string-array>
