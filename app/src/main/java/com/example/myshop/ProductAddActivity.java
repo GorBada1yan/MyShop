@@ -44,6 +44,7 @@ public class ProductAddActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
+    private String categoryName = "";
 
     private Uri ImageUri;
     private EditText product_name_add, product_description_add, product_price_add, product_contact_add, product_location_add;
@@ -71,8 +72,6 @@ public class ProductAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_add);
         init();
        init2();
-        ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
 
@@ -90,7 +89,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 ValidateProductData();
             }
         });
-
 
 
 
@@ -135,6 +133,9 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
+
+
+
 
 
         category_spinner_comerch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -190,6 +191,129 @@ public class ProductAddActivity extends AppCompatActivity {
             }
         });
 
+        category_spinner_bus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_bus_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        category_spinner_gruz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_gruz_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        category_spinner_selxoz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_selxoz_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        category_spinner_stroi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_stroi_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        category_spinner_stroi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_stroi_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        category_spinner_auto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_auto_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        category_spinner_moped.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_moped_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        category_spinner_velosiped.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_velosiped_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        category_spinner_moto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category_spinner_moto_value = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+
+
 
 
 
@@ -237,6 +361,8 @@ public class ProductAddActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
+        categoryName = category_spinner1_value+ category_spinner2_value+ category_spinner_comerch_value+ category_spinner_lich_value+category_spinner_bus_value+category_spinner_gruz_value+ category_spinner_selxoz_value+ category_spinner_stroi_value+ category_spinner_auto_value+ category_spinner_moped_value+ category_spinner_velosiped_value + category_spinner_moto_value ;
+
 
         final StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
@@ -280,19 +406,20 @@ public class ProductAddActivity extends AppCompatActivity {
     }
 
 
-
-    private void SaveProductInfoToDatabase(){
-        HashMap<String , Object> productMap = new HashMap<>();
+    private void SaveProductInfoToDatabase() {
+        HashMap<String, Object> productMap = new HashMap<>();
 
         productMap.put("pid", productRandomKey);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
+        productMap.put("category", categoryName);
+        productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("contacts", Contacts);
 
-        ProductsRef.child(productRandomKey).setValue(productMap)
+        ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -308,19 +435,11 @@ public class ProductAddActivity extends AppCompatActivity {
                             String message = task.getException().toString();
                             Toast.makeText(ProductAddActivity.this, "Ошибка: "+ message, Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
+
                         }
                     }
                 });
     }
-
-
-
-
-
-
-
-
-
 
 
     private void OpenGallery() {
@@ -329,6 +448,8 @@ public class ProductAddActivity extends AppCompatActivity {
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent,GALLERYPICK);
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -339,8 +460,6 @@ public class ProductAddActivity extends AppCompatActivity {
             productImage.setImageURI(ImageUri);
         }
     }
-
-
 
 
 
@@ -357,6 +476,10 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_comerch = findViewById(R.id.category_spinner_comerch);
         category_spinner_lich = findViewById(R.id.category_spinner_lich);
         productImage = findViewById(R.id.product_image_add);
+
+        ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        loadingBar = new ProgressDialog(this);
 
 
     }
