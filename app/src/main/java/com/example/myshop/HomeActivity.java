@@ -190,7 +190,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if(id == R.id.cart){
 
         } else if(id == R.id.add){
-            Intent addIntent = new Intent(HomeActivity.this, AddCategoryActivity.class);
+            Intent addIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
             startActivity(addIntent);
 
         } else if(id == R.id.categories){

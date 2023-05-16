@@ -22,13 +22,7 @@
             android:name=".InfoProdActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
-            android:exported="false" />
-        <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

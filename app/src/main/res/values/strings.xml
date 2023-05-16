@@ -23,64 +23,64 @@
 
 
     <string-array name="category_spinner1">
-        <item>*</item>
-        <item>Здается в аренду </item>
-        <item>Продается </item>
+        <item>Выберите</item>
+        <item>Здается в аренду</item>
+        <item>Продается</item>
     </string-array>
 
 
     <string-array name="category_spinner2">
-        <item>*</item>
-        <item>Камерческий транспорт </item>
-        <item>Личный транспорт </item>
+        <item>Выберите</item>
+        <item>Камерческий транспорт</item>
+        <item>Личный транспорт</item>
     </string-array>
 
     <string-array name="category_spinner_comerch">
-        <item>*</item>
-        <item>Грузовик </item>
-        <item>Автобус </item>
-        <item>Сельскохозяйственный транспорт </item>
-        <item>Строительская и тяжолая техника </item>
+        <item>Выберите</item>
+        <item>Грузовик</item>
+        <item>Автобус</item>
+        <item>Сельскохозяйственный транспорт</item>
+        <item>Строительская и тяжолая техника</item>
 
     </string-array>
 
     <string-array name="category_spinner_lich">
-        <item>*</item>
-        <item>Автомобили </item>
-        <item>Мотоциклы </item>
-        <item>Велосипеды </item>
-        <item>Мопеды </item>
+        <item>Выберите</item>
+        <item>Автомобили</item>
+        <item>Мотоциклы</item>
+        <item>Велосипеды</item>
+        <item>Мопеды</item>
     </string-array>
 
 
     <string-array name="category_spinner_bus">
-        <item>*</item>
-        <item>Городской автобус </item>
-        <item>Междугородный автобус </item>
-        <item>Микроавтобус </item>
-        <item>Школьный автобус </item>
-        <item> Вахтовый автобус </item>
-        <item>Туристический  автобус </item>
+        <item>Выберите</item>
+        <item>Городской автобус</item>
+        <item>Междугородный автобус</item>
+        <item>Микроавтобус</item>
+        <item>Школьный автобус</item>
+        <item> Вахтовый автобус</item>
+        <item>Туристический  автобус</item>
     </string-array>
     <string-array name="category_spinner_gruz">
-        <item>*</item>
-        <item>Транспортировщик животных </item>
-        <item>Тент </item>
-        <item>Автовоз </item>
-        <item>Уборочная машина </item>
-        <item>Самосвал </item>
-        <item>Бензовоз </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Транспортировщик животных</item>
+        <item>Тент</item>
+        <item>Автовоз</item>
+        <item>Уборочная машина</item>
+        <item>Самосвал</item>
+        <item>Бензовоз</item>
+        <item>Другое</item>
 
     </string-array>
 
     <string-array name="category_spinner_selxoz">
-        <item>*</item>
-        <item>Колесный трактор </item>
-        <item>Гусеничный трактор </item>
-        <item>Комбайн </item>
-        <item>Сеялка  </item>
-        <item>Загрузчик сухих кормов </item>
+        <item>Выберите</item>
+        <item>Колесный трактор</item>
+        <item>Гусеничный трактор</item>
+        <item>Комбайн</item>
+        <item>Сеялка</item>
+        <item>Загрузчик сухих кормов</item>
         <item> Харвестер</item>
         <item> Другое</item>
 
@@ -88,14 +88,14 @@
     </string-array>
 
     <string-array name="category_spinner_stroi">
-        <item>*</item>
-        <item>Самосвал </item>
-        <item>Кран </item>
-        <item>Экскаватор </item>
-        <item>Бульдозер </item>
-        <item>Погрузчик </item>
-        <item>Тягач </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Самосвал</item>
+        <item>Кран</item>
+        <item>Экскаватор</item>
+        <item>Бульдозер</item>
+        <item>Погрузчик</item>
+        <item>Тягач</item>
+        <item>Другое</item>
 
 
     </string-array>
@@ -104,49 +104,49 @@
     // Личный транспорт
 
     <string-array name="category_spinner_auto">
-        <item>*</item>
-        <item>Седан </item>
-        <item>Универсал </item>
-        <item>Хэтчбек </item>
-        <item>Лифтбек </item>
-        <item>Купе </item>
-        <item>Лимузин </item>
-        <item>Кабриолет </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Седан</item>
+        <item>Универсал</item>
+        <item>Хэтчбек</item>
+        <item>Лифтбек</item>
+        <item>Купе</item>
+        <item>Лимузин</item>
+        <item>Кабриолет</item>
+        <item>Другое</item>
 
 
     </string-array>
     <string-array name="category_spinner_velosiped">
-        <item>*</item>
-        <item>Дорожный (городской) </item>
-        <item>Шоссейный </item>
-        <item>Туринговый </item>
-        <item>Лифтбек </item>
-        <item>Горный </item>
-        <item>Фэтбайк </item>
-        <item>Гибрид </item>
-        <item>Циклокроссовый </item>
-        <item>Электровелосипед </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Дорожный (городской)</item>
+        <item>Шоссейный</item>
+        <item>Туринговый</item>
+        <item>Лифтбек</item>
+        <item>Горный</item>
+        <item>Фэтбайк</item>
+        <item>Гибрид</item>
+        <item>Циклокроссовый</item>
+        <item>Электровелосипед</item>
+        <item>Другое</item>
     </string-array>
 
     <string-array name="category_spinner_moto">
-        <item>*</item>
-        <item>Классический (дорожный) </item>
-        <item>Туристический (турер)  </item>
-        <item>Спортивный (гоночный) </item>
-        <item>Кроссовый (эндуро)  </item>
-        <item>Чоппер </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Классический (дорожный)</item>
+        <item>Туристический (турер)</item>
+        <item>Спортивный (гоночный)</item>
+        <item>Кроссовый (эндуро)</item>
+        <item>Чоппер</item>
+        <item>Другое</item>
     </string-array>
 
     <string-array name="category_spinner_moped">
-        <item>*</item>
-        <item>Классический </item>
-        <item>Мокик </item>
-        <item>Скутер </item>
-        <item>Мопед с коробкой передач </item>
-        <item>Другое </item>
+        <item>Выберите</item>
+        <item>Классический</item>
+        <item>Мокик</item>
+        <item>Скутер</item>
+        <item>Мопед с коробкой передач</item>
+        <item>Другое</item>
     </string-array>
 
 
