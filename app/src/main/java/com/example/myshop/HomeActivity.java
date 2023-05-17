@@ -41,6 +41,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 
 
@@ -105,7 +106,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Меню");
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +114,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         .setAction("Action", null).show();
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -131,8 +132,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this, calculateSpanCount());
         recyclerView.setLayoutManager(layoutManager);
+
 
 
     }
@@ -147,9 +149,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                 holder.txtProductName.setText(model.getPname());
-                holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText("Цена"+model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+
 
 
             }
@@ -211,4 +213,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return false;
 
     }
+    private int calculateSpanCount() {
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width); // Замените R.dimen.product_item_width на ваш ресурс ширины элемента продукта
+        int spanCount = screenWidth / itemWidth;
+        return Math.max(spanCount, 1); // Устанавливаем минимальное значение столбцов как 1
+    }
+
 }

@@ -26,7 +26,6 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
 
         imageView = itemView.findViewById(R.id.product_image);
         txtProductName = itemView.findViewById(R.id.product_name);
-        txtProductDescription = itemView.findViewById(R.id.product_description);
         txtProductPrice = itemView.findViewById(R.id.product_price);
 
 
@@ -44,7 +43,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
             Uri imageUri = getImageUri();
             Intent intent = new Intent(view.getContext(), InfoProdActivity.class);
             intent.putExtra("productName", txtProductName.getText().toString());
-            intent.putExtra("productDescription", txtProductDescription.getText().toString());
+//            intent.putExtra("productDescription", txtProductDescription.getText().toString());
             intent.putExtra("productPrice", txtProductPrice.getText().toString());
             intent.putExtra("imageUri", imageUri.toString());
 

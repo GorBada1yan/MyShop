@@ -25,8 +25,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -61,6 +66,7 @@ public class ProductAddActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private List<Uri> selectedImages = new ArrayList<>();
+    private String userId = "";
 
 
 
@@ -84,6 +90,10 @@ public class ProductAddActivity extends AppCompatActivity {
         init();
        init2();
         setupSelectedImagesRecyclerView();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        userId = currentUser.getUid();
+
+
 
 
 
@@ -343,6 +353,7 @@ public class ProductAddActivity extends AppCompatActivity {
         Pname = product_name_add.getText().toString();
         Contacts = product_contact_add.getText().toString();
 
+
         if (selectedImages.isEmpty()) {
             Toast.makeText(this, "Добавьте изображение товара.", Toast.LENGTH_SHORT).show();
             return;
@@ -396,6 +407,7 @@ public class ProductAddActivity extends AppCompatActivity {
 
 
 
+
             Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -443,6 +455,7 @@ public class ProductAddActivity extends AppCompatActivity {
         productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("contacts", Contacts);
+        productMap.put("userId" , userId);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
