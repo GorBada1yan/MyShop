@@ -1,4 +1,4 @@
-package com.example.myshop;
+package com.example.myshop.WelcomePages;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,7 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myshop.HomeActivity;
 import com.example.myshop.Prevalent.Prevalent;
+import com.example.myshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

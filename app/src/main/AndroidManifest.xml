@@ -30,13 +30,13 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.MyShop.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".WelcomePages.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".WelcomePages.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomePages.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

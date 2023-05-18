@@ -17,9 +17,11 @@ import com.example.myshop.Interface.ItemClickListner;
 import com.example.myshop.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView txtProductName, txtProductDescription, txtProductPrice;
+    public TextView txtProductName, txtProductPrice;
     public ImageView imageView;
     public ItemClickListner listner;
+    public String pid;
+
 
     public ProductViewHolder(View itemView) {
         super(itemView);
@@ -42,11 +44,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         if (view.getId() == imageView.getId()) {
             Uri imageUri = getImageUri();
             Intent intent = new Intent(view.getContext(), InfoProdActivity.class);
-            intent.putExtra("productName", txtProductName.getText().toString());
-//            intent.putExtra("productDescription", txtProductDescription.getText().toString());
-            intent.putExtra("productPrice", txtProductPrice.getText().toString());
-            intent.putExtra("imageUri", imageUri.toString());
-
+            intent.putExtra("productId", pid);
             view.getContext().startActivity(intent);
 
 
