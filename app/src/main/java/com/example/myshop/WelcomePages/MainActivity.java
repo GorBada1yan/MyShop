@@ -1,4 +1,4 @@
-package com.example.myshop;
+package com.example.myshop.WelcomePages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.myshop.HomeActivity;
 import com.example.myshop.Prevalent.Prevalent;
+import com.example.myshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

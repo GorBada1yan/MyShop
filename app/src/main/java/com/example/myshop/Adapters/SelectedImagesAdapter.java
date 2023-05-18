@@ -1,4 +1,4 @@
-package com.example.myshop;
+package com.example.myshop.Adapters;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myshop.R;
 
 import java.util.List;
 

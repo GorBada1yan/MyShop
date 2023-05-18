@@ -1,4 +1,4 @@
-package com.example.myshop;
+package com.example.myshop.Model;
 
 public class Products {
     private String pname,userId, description, price, image, category, pid, date, time, contacts;
