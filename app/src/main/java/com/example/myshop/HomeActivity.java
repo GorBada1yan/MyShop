@@ -1,5 +1,6 @@
 package com.example.myshop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myshop.Model.Products;
 import com.example.myshop.ViewHolder.ProductViewHolder;
 import com.example.myshop.WelcomePages.MainActivity;
@@ -34,6 +37,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -86,8 +91,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     String displayName = snapshot.child("name").getValue(String.class);
                     if (photoUrl !=null){
 
-                    // Загружаем изображение пользователя в ImageView
-                    Picasso.get().load(photoUrl).into(userProfileImage);}
+                        // Загружаем изображение пользователя в ImageView
+                        Picasso.get().load(photoUrl).into(userProfileImage);}
 
                     // Устанавливаем имя пользователя в TextView
                     username.setText(displayName);
