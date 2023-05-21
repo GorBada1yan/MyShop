@@ -145,13 +145,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+                int reversedPosition = getItemCount() - position - 1;
+                Products reversedModel = getItem(reversedPosition);
+
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductPrice.setText("Цена : "+model.getPrice()+ "$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.pid = model.getPid();
-
-
-
+            }
+            @Override
+            public Products getItem(int position) {
+                return super.getItem(getItemCount() - position - 1);
+            }
+            @Override
+            public int getItemCount() {
+                return super.getItemCount();
             }
 
             @NonNull
@@ -217,5 +225,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int spanCount = screenWidth / itemWidth;
         return Math.max(spanCount, 1); // Устанавливаем минимальное значение столбцов как 1
     }
+
 
 }
