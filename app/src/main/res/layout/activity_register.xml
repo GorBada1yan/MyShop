@@ -48,7 +48,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:hint="Намер телефона "
+        android:hint="Номер телефона "
         android:inputType="phone"
         android:textColorHint="@color/hint"
         android:textColor="@color/hint"

@@ -33,9 +33,9 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         imageView.setOnClickListener(this);
     }
 
-//    public void setItemClickListner(ItemClickListner listner) {
-//        this.listner = listner;
-//    }
+    public void setItemClickListner(ItemClickListner listner) {
+        this.listner = listner;
+    }
 
     @Override
     public void onClick(View view) {

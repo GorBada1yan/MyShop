@@ -11,11 +11,11 @@
         <item
             android:id="@+id/cart"
             android:icon="@drawable/cart"
-            android:title="Карзина" />
+            android:title="Избранные" />
         <item
             android:id="@+id/add"
             android:icon="@drawable/add"
-            android:title="Проодать товар" />
+            android:title="Добавить обявление" />
         <item
             android:id="@+id/categories"
             android:icon="@drawable/category"

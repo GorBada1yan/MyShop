@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
-            String UserEmailKey = Paper.book().read(Prevalent.UserEmailKey);
-            String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
+        String UserEmailKey = Paper.book().read(Prevalent.UserEmailKey);
+        String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
+        if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
             if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
-                if (!TextUtils.isEmpty(UserEmailKey) && !TextUtils.isEmpty(UserPasswordKey)){
-                    loginUser(UserEmailKey, UserPasswordKey);
+                loginUser(UserEmailKey, UserPasswordKey);
 
-                }
             }
+        }
 
     }
 
