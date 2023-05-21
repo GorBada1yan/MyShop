@@ -84,7 +84,7 @@ public class ProductAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_add);
         init();
-       init2();
+        init2();
         setupSelectedImagesRecyclerView();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = currentUser.getUid();
@@ -161,25 +161,25 @@ public class ProductAddActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    category_spinner_comerch_value = parent.getItemAtPosition(position).toString();
-                    if (category_spinner_comerch_value.equals("Выберите"))category_spinner_comerch_value ="";
-                    else
-                    if (category_spinner_comerch_value.equals("Автобус")) {
+                category_spinner_comerch_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_comerch_value.equals("Выберите"))category_spinner_comerch_value ="";
+                else
+                if (category_spinner_comerch_value.equals("Автобус")) {
 
-                        category_spinner_bus.setVisibility(View.VISIBLE);
-                    } else category_spinner_bus.setVisibility(View.INVISIBLE);
-                    if (category_spinner_comerch_value.equals("Грузовик")) {
+                    category_spinner_bus.setVisibility(View.VISIBLE);
+                } else category_spinner_bus.setVisibility(View.INVISIBLE);
+                if (category_spinner_comerch_value.equals("Грузовик")) {
 
-                        category_spinner_gruz.setVisibility(View.VISIBLE);
-                    } else category_spinner_gruz.setVisibility(View.INVISIBLE);
-                    if (category_spinner_comerch_value.equals("Сельскохозяйственный транспорт")) {
+                    category_spinner_gruz.setVisibility(View.VISIBLE);
+                } else category_spinner_gruz.setVisibility(View.INVISIBLE);
+                if (category_spinner_comerch_value.equals("Сельскохозяйственный транспорт")) {
 
-                        category_spinner_selxoz.setVisibility(View.VISIBLE);
-                    } else category_spinner_selxoz.setVisibility(View.INVISIBLE);
-                    if (category_spinner_comerch_value.equals("Строительская и тяжолая техника")) {
+                    category_spinner_selxoz.setVisibility(View.VISIBLE);
+                } else category_spinner_selxoz.setVisibility(View.INVISIBLE);
+                if (category_spinner_comerch_value.equals("Строительская и тяжолая техника")) {
 
-                        category_spinner_stroi.setVisibility(View.VISIBLE);
-                    } else category_spinner_stroi.setVisibility(View.INVISIBLE);
+                    category_spinner_stroi.setVisibility(View.VISIBLE);
+                } else category_spinner_stroi.setVisibility(View.INVISIBLE);
 
 
 
@@ -195,9 +195,9 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_lich.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 category_spinner_lich_value = parent.getItemAtPosition(position).toString();
-                 if (category_spinner_lich_value.equals("Выберите"))category_spinner_lich_value = "";
-                 else
+                category_spinner_lich_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_lich_value.equals("Выберите"))category_spinner_lich_value = "";
+                else
                 if (category_spinner_lich_value.equals("Автомобили"))
                     category_spinner_auto.setVisibility(View.VISIBLE);
                 else category_spinner_auto.setVisibility(View.INVISIBLE);
@@ -222,8 +222,8 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_bus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               category_spinner_bus_value = parent.getItemAtPosition(position).toString();
-               if (category_spinner_bus_value.equals("Выберите"))category_spinner_bus_value = "";
+                category_spinner_bus_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_bus_value.equals("Выберите"))category_spinner_bus_value = "";
 
             }
 
@@ -236,8 +236,8 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_gruz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               category_spinner_gruz_value = parent.getItemAtPosition(position).toString();
-               if (category_spinner_gruz_value.equals("Выберите"))category_spinner_gruz_value = "";
+                category_spinner_gruz_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_gruz_value.equals("Выберите"))category_spinner_gruz_value = "";
 
             }
 
@@ -251,8 +251,8 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_selxoz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               category_spinner_selxoz_value = parent.getItemAtPosition(position).toString();
-               if (category_spinner_selxoz_value.equals("Выберите"))category_spinner_selxoz_value = "";
+                category_spinner_selxoz_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_selxoz_value.equals("Выберите"))category_spinner_selxoz_value = "";
 
             }
 
@@ -295,8 +295,8 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_moped.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               category_spinner_moped_value = parent.getItemAtPosition(position).toString();
-               if (category_spinner_moped_value.equals("Выберите"))category_spinner_moped_value = "";
+                category_spinner_moped_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_moped_value.equals("Выберите"))category_spinner_moped_value = "";
 
             }
 
@@ -309,8 +309,8 @@ public class ProductAddActivity extends AppCompatActivity {
         category_spinner_velosiped.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               category_spinner_velosiped_value = parent.getItemAtPosition(position).toString();
-               if (category_spinner_velosiped_value.equals("Выберите"))category_spinner_velosiped_value = "";
+                category_spinner_velosiped_value = parent.getItemAtPosition(position).toString();
+                if (category_spinner_velosiped_value.equals("Выберите"))category_spinner_velosiped_value = "";
 
 
             }
