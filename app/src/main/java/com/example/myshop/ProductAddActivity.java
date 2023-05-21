@@ -41,47 +41,59 @@ import java.util.List;
 public class ProductAddActivity extends AppCompatActivity {
     private TextView back_add, add_add;
     private ImageView productImage;
-    private String Description, Price,  Contacts;
+    private String Description, Price, Pname, Contacts;
     private String saveCurrentDate, saveCurrentTime, productRandomKey;
+    private EditText product_description_add, product_price_add, product_contact_add;
     private static final int GALLERYPICK = 1;
     private ProgressDialog loadingBar;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
-    private Spinner car_mark, car_year, car_kuzov, car_motor, car_bublik;
-    private String Scar_mark, Scar_year, Scar_kuzov, Scar_motor, Scar_bublik;
+    private Spinner car_mark, car_kuzov, car_year, car_motor, car_bublik;
+    private String car_kuzovS = "";
+    private String car_yearS = "";
+    private String car_motorS = "";
+    private String car_bublikS = "";
+    private String car_markS = "";
 
 
     private Uri ImageUri;
-    private EditText  product_description_add, product_price_add, product_contact_add;
 
     private String downloadImageUrl;
+
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private List<Uri> selectedImages = new ArrayList<>();
     private String userId = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_add);
         init();
-        spinner();
-
-
+        init2();
         setupSelectedImagesRecyclerView();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = currentUser.getUid();
+
         productImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OpenGallery();
             }
         });
+
         add_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ValidateProductData();
             }
         });
+
+
+
+
+
         back_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +101,80 @@ public class ProductAddActivity extends AppCompatActivity {
                 startActivity(backfromadd);
             }
         });
+
+        car_mark.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_markS = parent.getItemAtPosition(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        car_kuzov.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_kuzovS = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+
+
+
+        car_bublik.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                car_bublikS = parent.getItemAtPosition(position).toString();
+               }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        car_motor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_motorS = parent.getItemAtPosition(position).toString();
+                }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        car_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_yearS = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+
+
+
+
+
 
     }
 
@@ -98,27 +184,35 @@ public class ProductAddActivity extends AppCompatActivity {
         Contacts = product_contact_add.getText().toString();
 
 
+
         if (selectedImages.isEmpty()) {
-            Toast.makeText(this, "Добавьте изображение товара.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Добавьте изображение машини", Toast.LENGTH_SHORT).show();
             return;
         }
         else if(TextUtils.isEmpty(Description)){
             Toast.makeText(this, "Добавьте описание", Toast.LENGTH_SHORT).show();
         }
+        else if(car_markS.equals("Марка*")){
+            Toast.makeText(this, "Выберите марку", Toast.LENGTH_SHORT).show();
+        }
+        else if(car_yearS.equals("Год выпуска*")){
+            Toast.makeText(this, "Выберите год выпуска", Toast.LENGTH_SHORT).show();
+        }
+        else if(car_kuzovS.equals("Тип кузова*")){
+            Toast.makeText(this, "Выберите тип кузова", Toast.LENGTH_SHORT).show();
+        }
+        else if(car_motorS.equals("Мотор*")){
+            Toast.makeText(this, "Выберите тип мотора", Toast.LENGTH_SHORT).show();
+        }else if(car_bublikS.equals("Руль*")){
+            Toast.makeText(this, "Выберите тип руля", Toast.LENGTH_SHORT).show();
+        }
         else if(TextUtils.isEmpty(Price)){
             Toast.makeText(this, "Добавьте стоимость", Toast.LENGTH_SHORT).show();
-        }else if (Scar_bublik.equals("Руль*")){
-            Toast.makeText(this, "Категория (Руль) должна быть заполнена", Toast.LENGTH_SHORT).show();
-        }else if (Scar_kuzov.equals("Тип кузова*")){
-            Toast.makeText(this, "Категория (Тип кузова*) должна быть заполнена", Toast.LENGTH_SHORT).show();
-        }else if (Scar_mark.equals("Марка*")){
-            Toast.makeText(this, "Категория (Марка*) должна быть заполнена", Toast.LENGTH_SHORT).show();
-        }else if (Scar_motor.equals("Мотор*")){
-            Toast.makeText(this, "Категория (Мотор*) должна быть заполнена", Toast.LENGTH_SHORT).show();
-        }else if (Scar_year.equals("Год выпуска*")){
-            Toast.makeText(this, "Категория (Год выпуска*) должна быть заполнена", Toast.LENGTH_SHORT).show();
-        }else {
+        }
+        else {
             StoreProductInformation();
+
+
         }
     }
 
@@ -195,16 +289,15 @@ public class ProductAddActivity extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
-        productMap.put("car_kuzov", Scar_kuzov);
-        productMap.put("car_motor", Scar_motor);
-        productMap.put("car_bublik", Scar_bublik);
-        productMap.put("car_mark", Scar_mark);
-        productMap.put("car_year",Scar_year);
-
         productMap.put("price", Price);
-
+        productMap.put("pname", Pname);
         productMap.put("contacts", Contacts);
         productMap.put("userId" , userId);
+        productMap.put("car_kuzov", car_kuzovS);
+        productMap.put("car_motor", car_motorS);
+        productMap.put("car_year", car_yearS);
+        productMap.put("car_bublik", car_bublikS);
+        productMap.put("car_mark", car_markS);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -231,9 +324,6 @@ public class ProductAddActivity extends AppCompatActivity {
         galleryIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         startActivityForResult(galleryIntent, GALLERYPICK);
     }
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -252,29 +342,51 @@ public class ProductAddActivity extends AppCompatActivity {
             setupSelectedImagesRecyclerView();
         }
     }
-
-
-
-
     private void init(){
         back_add = findViewById(R.id.back_add);
         add_add = findViewById(R.id.add_add);
+
         product_description_add = findViewById(R.id.product_description_add);
         product_price_add = findViewById(R.id.product_price_add);
         product_contact_add = findViewById(R.id.product_contact_add);
-        car_mark = findViewById(R.id.car_mark);
+
         car_year = findViewById(R.id.car_year);
-        car_kuzov = findViewById(R.id.car_kuzov);
         car_motor = findViewById(R.id.car_motor);
+        car_kuzov = findViewById(R.id.car_kuzov);
+        car_mark = findViewById(R.id.car_mark);
         car_bublik = findViewById(R.id.car_bublik);
         productImage = findViewById(R.id.product_image_add);
+
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);
+
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference().child("product_images"); // "product_images" - это путь, по которому будут сохраняться изображения
 
 
+
+    }
+    private void init2(){
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.car_mark, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_mark.setAdapter(adapter1);
+
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.car_bublik, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_bublik.setAdapter(adapter2);
+
+        ArrayAdapter<CharSequence> adaptercomerch = ArrayAdapter.createFromResource(this, R.array.car_kuzov, android.R.layout.simple_spinner_item);
+        adaptercomerch.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_kuzov.setAdapter(adaptercomerch);
+
+        ArrayAdapter<CharSequence> adaptermotor = ArrayAdapter.createFromResource(this, R.array.car_motor, android.R.layout.simple_spinner_item);
+        adaptermotor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_motor.setAdapter(adaptermotor);
+
+        ArrayAdapter<CharSequence> adapteryear = ArrayAdapter.createFromResource(this, R.array.car_year, android.R.layout.simple_spinner_item);
+        adapteryear.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_year.setAdapter(adapteryear);
     }
     private void setupSelectedImagesRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.selected_images_recycler_view);
@@ -284,58 +396,6 @@ public class ProductAddActivity extends AppCompatActivity {
         // Create an adapter for the RecyclerView
         SelectedImagesAdapter adapter = new SelectedImagesAdapter(selectedImages);
         recyclerView.setAdapter(adapter);
-    }
-    private void spinner(){
-        car_mark.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Scar_mark = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        car_motor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Scar_motor = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        car_bublik.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Scar_bublik = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        car_kuzov.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Scar_kuzov = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        car_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Scar_year = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
     }
 
 

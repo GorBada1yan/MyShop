@@ -111,10 +111,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
-
-
-
             <EditText
                 android:id="@+id/product_description_add"
                 android:layout_width="match_parent"
@@ -128,8 +124,6 @@
                 android:padding="10dp"
                 android:textColorHint="@color/hint"
                 android:textSize="15sp" />
-
-
             <EditText
                 android:id="@+id/product_price_add"
                 android:layout_width="match_parent"
@@ -158,21 +152,6 @@
                 android:padding="10dp"
                 android:textColor="@color/hint"
                 android:textColorHint="@color/hint" />
-
-
-
-
-
-
-
-
-
         </RelativeLayout>
-
-
-
     </ScrollView>
-
-
-
 </RelativeLayout>
