@@ -41,19 +41,20 @@ import java.util.List;
 public class ProductAddActivity extends AppCompatActivity {
     private TextView back_add, add_add;
     private ImageView productImage;
-    private String Description, Price, Pname, Contacts;
+    private String Description, Price;
     private String saveCurrentDate, saveCurrentTime, productRandomKey;
-    private EditText product_description_add, product_price_add, product_contact_add;
+    private EditText product_description_add, product_price_add;
     private static final int GALLERYPICK = 1;
     private ProgressDialog loadingBar;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
-    private Spinner car_mark, car_kuzov, car_year, car_motor, car_bublik;
+    private Spinner car_mark, car_kuzov, car_year, car_motor, car_bublik , car_name;
     private String car_kuzovS = "";
     private String car_yearS = "";
     private String car_motorS = "";
     private String car_bublikS = "";
     private String car_markS = "";
+    private String car_nameS = "";
 
 
     private Uri ImageUri;
@@ -89,11 +90,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 ValidateProductData();
             }
         });
-
-
-
-
-
         back_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,11 +97,21 @@ public class ProductAddActivity extends AppCompatActivity {
                 startActivity(backfromadd);
             }
         });
-
         car_mark.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 car_markS = parent.getItemAtPosition(position).toString();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        car_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_nameS = parent.getItemAtPosition(position).toString();
 
             }
 
@@ -114,7 +120,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
-
         car_kuzov.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -126,11 +131,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
-
-
-
-
-
         car_bublik.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -143,8 +143,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
-
-
         car_motor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -156,7 +154,6 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
-
         car_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -168,20 +165,12 @@ public class ProductAddActivity extends AppCompatActivity {
                 // Do nothing
             }
         });
-
-
-
-
-
-
-
-
     }
 
     private void ValidateProductData() {
         Description = product_description_add.getText().toString();
         Price = product_price_add.getText().toString();
-        Contacts = product_contact_add.getText().toString();
+
 
 
 
@@ -194,8 +183,9 @@ public class ProductAddActivity extends AppCompatActivity {
         }
         else if(car_markS.equals("Марка*")){
             Toast.makeText(this, "Выберите марку", Toast.LENGTH_SHORT).show();
-        }
-        else if(car_yearS.equals("Год выпуска*")){
+        }else if(car_nameS.equals("Модель*")){
+            Toast.makeText(this, "Выберите модель", Toast.LENGTH_SHORT).show();
+        }else if(car_yearS.equals("Год выпуска*")){
             Toast.makeText(this, "Выберите год выпуска", Toast.LENGTH_SHORT).show();
         }
         else if(car_kuzovS.equals("Тип кузова*")){
@@ -290,8 +280,7 @@ public class ProductAddActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
         productMap.put("price", Price);
-        productMap.put("pname", Pname);
-        productMap.put("contacts", Contacts);
+        productMap.put("model", car_nameS);
         productMap.put("userId" , userId);
         productMap.put("car_kuzov", car_kuzovS);
         productMap.put("car_motor", car_motorS);
@@ -348,15 +337,13 @@ public class ProductAddActivity extends AppCompatActivity {
 
         product_description_add = findViewById(R.id.product_description_add);
         product_price_add = findViewById(R.id.product_price_add);
-        product_contact_add = findViewById(R.id.product_contact_add);
-
+        car_name = findViewById(R.id.car_name);
         car_year = findViewById(R.id.car_year);
         car_motor = findViewById(R.id.car_motor);
         car_kuzov = findViewById(R.id.car_kuzov);
         car_mark = findViewById(R.id.car_mark);
         car_bublik = findViewById(R.id.car_bublik);
         productImage = findViewById(R.id.product_image_add);
-
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);
@@ -368,17 +355,22 @@ public class ProductAddActivity extends AppCompatActivity {
 
     }
     private void init2(){
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.car_mark, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        car_mark.setAdapter(adapter1);
+        ArrayAdapter<CharSequence> adaptermark = ArrayAdapter.createFromResource(this, R.array.car_mark, android.R.layout.simple_spinner_item);
+        adaptermark.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_mark.setAdapter(adaptermark);
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.car_bublik, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        car_bublik.setAdapter(adapter2);
+        ArrayAdapter<CharSequence> adaptername = ArrayAdapter.createFromResource(this, R.array.car_name, android.R.layout.simple_spinner_item);
+        adaptername.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_name.setAdapter(adaptername);
 
-        ArrayAdapter<CharSequence> adaptercomerch = ArrayAdapter.createFromResource(this, R.array.car_kuzov, android.R.layout.simple_spinner_item);
-        adaptercomerch.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        car_kuzov.setAdapter(adaptercomerch);
+
+        ArrayAdapter<CharSequence> adapterbublik = ArrayAdapter.createFromResource(this, R.array.car_bublik, android.R.layout.simple_spinner_item);
+        adapterbublik.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_bublik.setAdapter(adapterbublik);
+
+        ArrayAdapter<CharSequence> adapterkuzov = ArrayAdapter.createFromResource(this, R.array.car_kuzov, android.R.layout.simple_spinner_item);
+        adapterkuzov.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_kuzov.setAdapter(adapterkuzov);
 
         ArrayAdapter<CharSequence> adaptermotor = ArrayAdapter.createFromResource(this, R.array.car_motor, android.R.layout.simple_spinner_item);
         adaptermotor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

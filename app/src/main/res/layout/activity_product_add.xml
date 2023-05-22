@@ -80,8 +80,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <Spinner
-                android:id="@+id/car_kuzov"
+                android:id="@+id/car_name"
                 android:layout_below="@+id/car_mark"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/car_kuzov"
+                android:layout_below="@+id/car_name"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
