@@ -101,13 +101,15 @@ public class ProductAddActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 car_markS = parent.getItemAtPosition(position).toString();
-
+                updateCarNameAdapter();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
             }
         });
+
         car_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -388,6 +390,20 @@ public class ProductAddActivity extends AppCompatActivity {
         // Create an adapter for the RecyclerView
         SelectedImagesAdapter adapter = new SelectedImagesAdapter(selectedImages);
         recyclerView.setAdapter(adapter);
+    }
+    private void updateCarNameAdapter() {
+        ArrayAdapter<CharSequence> adapter;
+        if (car_markS.equals("Toyota")) {
+            adapter = ArrayAdapter.createFromResource(this, R.array.car_name_Toyota, android.R.layout.simple_spinner_item);
+        } else if (car_markS.equals("Nissan")) {
+            adapter = ArrayAdapter.createFromResource(this, R.array.car_name_Nissan, android.R.layout.simple_spinner_item);
+        }else if (car_markS.equals("Mercedes-Benz")) {
+            adapter = ArrayAdapter.createFromResource(this, R.array.car_name_Mercedes, android.R.layout.simple_spinner_item);
+        } else {
+            adapter = ArrayAdapter.createFromResource(this, R.array.car_name, android.R.layout.simple_spinner_item);
+        }
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_name.setAdapter(adapter);
     }
 
 
