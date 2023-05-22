@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private FirebaseUser currentUser;
+    private TextView name_;
     private DatabaseReference databaseReference;
 
 
@@ -148,7 +149,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 int reversedPosition = getItemCount() - position - 1;
                 Products reversedModel = getItem(reversedPosition);
 
-                holder.txtProductName.setText(model.getPname());
+                holder.txtProductName.setText(model.getCar_mark());
+                holder.txtProductModel.setText(model.getCar_name());
                 holder.txtProductPrice.setText("Цена : "+model.getPrice()+ "$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.pid = model.getPid();

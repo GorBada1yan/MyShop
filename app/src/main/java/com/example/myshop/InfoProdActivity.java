@@ -44,7 +44,7 @@ public class InfoProdActivity extends AppCompatActivity {
                 public void onCallback(Products product) {
                     if (product != null) {
                         // Установка полученных значений в элементы интерфейса
-                        info_name.setText(product.getPname());
+                        info_name.setText(product.getCar_mark()+":"+product.getCar_name());
                         info_price.setText(product.getPrice());
                         info_description.setText(product.getDescription());
 

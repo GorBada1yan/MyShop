@@ -2,7 +2,12 @@ package com.example.myshop.Model;
 
 public class Products {
     private String pid;
-    private String pname;
+    private String car_bublik;
+    private String car_kuzov;
+    private String car_mark;
+    private String car_motor;
+    private String car_year;
+    private String car_name;
     private String price;
     private String time;
     private String userId;
@@ -16,9 +21,14 @@ public class Products {
     private String image;
     public Products(){}
 
-    public Products (String pid, String pname, String price, String time, String userId, String categoryRent, String categorySubTypeofMachine, String categoryType, String categoryTypeofMachine, String contacts, String date, String description, String image){
+    public Products (String pid,String car_bublik,String car_name, String car_kuzov,String car_mark,String car_motor, String car_year,  String price, String time, String userId, String categoryRent, String categorySubTypeofMachine, String categoryType, String categoryTypeofMachine, String contacts, String date, String description, String image){
         this.pid = pid;
-        this.pname = pname;
+        this.car_bublik = car_bublik;
+        this.car_name = car_name;
+        this.car_kuzov = car_kuzov;
+        this.car_mark = car_mark;
+        this.car_motor = car_motor;
+        this.car_year = car_year;
         this.price = price;
         this.time = time;
         this.userId = userId;
@@ -40,12 +50,52 @@ public class Products {
         this.pid = pid;
     }
 
-    public String getPname() {
-        return pname;
+    public String getCar_name() {
+        return car_name;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setCar_name(String car_name) {
+        this.car_name = car_name;
+    }
+
+    public String getCar_bublik() {
+        return car_bublik;
+    }
+
+    public void setCar_bublik(String car_bublik) {
+        this.car_bublik = car_bublik;
+    }
+
+    public String getCar_kuzov() {
+        return car_kuzov;
+    }
+
+    public void setCar_kuzov(String car_kuzov) {
+        this.car_kuzov = car_kuzov;
+    }
+
+    public String getCar_mark() {
+        return car_mark;
+    }
+
+    public void setCar_mark(String car_mark) {
+        this.car_mark = car_mark;
+    }
+
+    public String getCar_motor() {
+        return car_motor;
+    }
+
+    public void setCar_motor(String car_motor) {
+        this.car_motor = car_motor;
+    }
+
+    public String getCar_year() {
+        return car_year;
+    }
+
+    public void setCar_year(String car_year) {
+        this.car_year = car_year;
     }
 
     public String getPrice() {

@@ -30,6 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
     private CircleImageView account_image;
     private TextView fullname, semail, sphone;
     private TextView editProfile, close;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class SettingsActivity extends AppCompatActivity {
         account_image=findViewById(R.id.account_image_settings);
         editProfile = findViewById(R.id.edit_settings);
 
+
+
+
+
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +58,11 @@ public class SettingsActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+        if (currentUser != null) {
+            String currentUserId = currentUser.getUid();
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+        }
+
 
 
         userRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {

@@ -17,7 +17,7 @@ import com.example.myshop.Interface.ItemClickListner;
 import com.example.myshop.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView txtProductName, txtProductPrice;
+    public TextView txtProductName, txtProductPrice, txtProductModel;
     public ImageView imageView;
     public ItemClickListner listner;
     public String pid;
@@ -28,6 +28,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         imageView = itemView.findViewById(R.id.product_image);
         txtProductName = itemView.findViewById(R.id.product_name);
         txtProductPrice = itemView.findViewById(R.id.product_price);
+        txtProductModel = itemView.findViewById(R.id.product_name_);
 
         itemView.setOnClickListener(this);
         imageView.setOnClickListener(this);
