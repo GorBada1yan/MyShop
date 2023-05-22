@@ -49,6 +49,58 @@ public class ProfileEditActivity extends AppCompatActivity {
         init();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+        close_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backEditIntent = new Intent(ProfileEditActivity.this, SettingsActivity.class);
+                startActivity(backEditIntent);
+            }
+        });
+        save_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newName = fullname_edit.getText().toString();
+                String newPhone = phone_edit.getText().toString();
+
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid());
+
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String currentName = dataSnapshot.child("name").getValue(String.class);
+                        String currentPhone = dataSnapshot.child("phone").getValue(String.class);
+
+                        if (!newName.equals(currentName)) {
+                            // Обновляем имя пользователя
+                            userRef.child("name").setValue(newName);
+                        }
+
+                        if (!newPhone.equals(currentPhone)) {
+                            // Обновляем номер телефона пользователя
+                            userRef.child("phone").setValue(newPhone);
+                        }
+
+                        // Проверяем, были ли внесены изменения
+                        if (!newName.equals(currentName) || !newPhone.equals(currentPhone)) {
+                            Toast.makeText(ProfileEditActivity.this, "Профиль обновлен", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ProfileEditActivity.this, "Нет изменений для сохранения", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // Переходим обратно на экран настроек после сохранения изменений
+                        Intent saveEditIntent = new Intent(ProfileEditActivity.this, SettingsActivity.class);
+                        startActivity(saveEditIntent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Обрабатываем ошибку
+                    }
+                });
+            }
+        });
+
+
 
         userRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -142,32 +194,10 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         }
 
-        save_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newName = fullname_edit.getText().toString();
-                String newPhone = phone_edit.getText().toString();
 
-                // Получаем ссылку на узел текущего пользователя
-                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid());
 
-                // Обновляем имя и номер телефона пользователя в Firebase Database
-                userRef.child("name").setValue(newName);
-                userRef.child("phone").setValue(newPhone);
 
-                // Оповещаем пользователя об успешном обновлении данных
-                Toast.makeText(ProfileEditActivity.this, "Профиль обнавлен", Toast.LENGTH_SHORT).show();
-                Intent saveEditIntent = new Intent(ProfileEditActivity.this, SettingsActivity.class);
-                startActivity(saveEditIntent);
-            }
-        });
-        close_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backIntent = new Intent(ProfileEditActivity.this, SettingsActivity.class);
-                startActivity(backIntent);
-            }
-        });
+
 
 
 
