@@ -206,11 +206,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if(id == R.id.settings){
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
+            finish();
 
         } else if(id == R.id.logout){
             Paper.book().destroy();
             Intent loginIntent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(loginIntent);
+            finish();
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myshop.Adapters.ProductAdapter;
 import com.example.myshop.Model.Products;
+import com.example.myshop.ViewHolder.CarViewHolder;
 import com.example.myshop.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -48,30 +49,54 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        fullname=findViewById(R.id.fullname_settings);
-        close=findViewById(R.id.close_setting);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
         semail = findViewById(R.id.email_settings);
         sphone=findViewById(R.id.phone_settings);
         account_image=findViewById(R.id.account_image_settings);
-        editProfile = findViewById(R.id.edit_settings);
+        fullname=findViewById(R.id.fullname_settings);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         recyclerView = findViewById(R.id.product_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this, calculateSpanCount());
         recyclerView.setLayoutManager(layoutManager);
+        close=findViewById(R.id.close_setting);
+        editProfile = findViewById(R.id.edit_settings);
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(ProductsRef, Products.class).build();
+        FirebaseRecyclerAdapter<Products, CarViewHolder> adapter = new FirebaseRecyclerAdapter<Products, CarViewHolder>(options) {
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent editIntent = new Intent(SettingsActivity.this, ProfileEditActivity.class);
-                startActivity(editIntent);
+            protected void onBindViewHolder(@NonNull CarViewHolder holder, int position, @NonNull Products model) {
+                int reversedPosition = getItemCount() - position - 1;
+                Products reversedModel = getItem(reversedPosition);
+
+                holder.txtProductName.setText(model.getCar_mark());
+                holder.txtProductModel.setText(model.getCar_name());
+                holder.txtProductPrice.setText("Цена : " + model.getPrice() + "$");
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+                holder.pid = model.getPid();
             }
-        });
+            @Override
+            public Products getItem(int position) {
+                return super.getItem(getItemCount() - position - 1);
+            }
+            @Override
+            public int getItemCount() {
+                return super.getItemCount();
+            }
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
-
-
+            @NonNull
+            @Override
+            public CarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                CarViewHolder holder = new CarViewHolder(view);
+                return holder;
+            }
+        };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
         userRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -119,6 +144,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+
 // Получаем ссылку на фотографию пользователя из базы данных
         userRef.child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -133,11 +159,9 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Обрабатываем ошибку
+
             }
         });
-
-
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,29 +170,19 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(closeIntent);
             }
         });
-
-
-
-
-
-
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class).build();
-        ProductAdapter adapter = new ProductAdapter(options);
-
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editIntent = new Intent(SettingsActivity.this, ProfileEditActivity.class);
+                startActivity(editIntent);
+            }
+        });
     }
     private int calculateSpanCount() {
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width); // R.dimen.product_item_width на ваш ресурс ширины элемента продукта
+        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width);
         int spanCount = screenWidth / itemWidth;
-        return Math.max(spanCount, 1); // Устанавливаем минимальное значение столбцов как 1
+        return Math.max(spanCount, 1);
     }
 
 }
