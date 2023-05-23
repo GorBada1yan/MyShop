@@ -5,15 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.myshop.Adapters.ProductAdapter;
+import com.example.myshop.Model.Products;
+import com.example.myshop.ViewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
-
-
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -30,6 +38,10 @@ public class SettingsActivity extends AppCompatActivity {
     private CircleImageView account_image;
     private TextView fullname, semail, sphone;
     private TextView editProfile, close;
+    DatabaseReference ProductsRef;
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,11 @@ public class SettingsActivity extends AppCompatActivity {
         sphone=findViewById(R.id.phone_settings);
         account_image=findViewById(R.id.account_image_settings);
         editProfile = findViewById(R.id.edit_settings);
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        recyclerView = findViewById(R.id.product_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new GridLayoutManager(this, calculateSpanCount());
+        recyclerView.setLayoutManager(layoutManager);
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +152,23 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(ProductsRef, Products.class).build();
+        ProductAdapter adapter = new ProductAdapter(options);
+
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+    private int calculateSpanCount() {
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width); // R.dimen.product_item_width на ваш ресурс ширины элемента продукта
+        int spanCount = screenWidth / itemWidth;
+        return Math.max(spanCount, 1); // Устанавливаем минимальное значение столбцов как 1
     }
 
 }

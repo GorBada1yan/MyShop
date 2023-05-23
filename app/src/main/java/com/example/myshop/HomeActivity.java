@@ -52,7 +52,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private FirebaseUser currentUser;
-    private TextView name_;
     private DatabaseReference databaseReference;
 
 
@@ -63,9 +62,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-
-
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             String currentUserId = currentUser.getUid();
