@@ -55,6 +55,7 @@ public class ProductAddActivity extends AppCompatActivity {
     private String car_bublikS = "";
     private String car_markS = "";
     private String car_nameS = "";
+    private  EditText dop_contacts;
 
 
     private Uri ImageUri;
@@ -65,6 +66,7 @@ public class ProductAddActivity extends AppCompatActivity {
     private StorageReference storageRef;
     private List<Uri> selectedImages = new ArrayList<>();
     private String userId = "";
+    private String userContacts = "";
 
 
     @Override
@@ -76,6 +78,8 @@ public class ProductAddActivity extends AppCompatActivity {
         setupSelectedImagesRecyclerView();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = currentUser.getUid();
+        userContacts = currentUser.getPhoneNumber();
+
 
         productImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +118,6 @@ public class ProductAddActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 car_nameS = parent.getItemAtPosition(position).toString();
-
             }
 
             @Override
@@ -172,10 +175,6 @@ public class ProductAddActivity extends AppCompatActivity {
     private void ValidateProductData() {
         Description = product_description_add.getText().toString();
         Price = product_price_add.getText().toString();
-
-
-
-
         if (selectedImages.isEmpty()) {
             Toast.makeText(this, "Добавьте изображение машини", Toast.LENGTH_SHORT).show();
             return;
@@ -203,12 +202,9 @@ public class ProductAddActivity extends AppCompatActivity {
         }
         else {
             StoreProductInformation();
-
-
         }
     }
-
-
+//TODO spinners for Toyota, Mercedes , Nissan etc.
 
     private void StoreProductInformation() {
 
@@ -274,7 +270,7 @@ public class ProductAddActivity extends AppCompatActivity {
         HashMap<String, Object> productMap = new HashMap<>();
 
         // Add other product information to the HashMap
-
+        String car_model = car_nameS;
         productMap.put("image*", imageUrls);
         productMap.put("pid", productRandomKey);
         productMap.put("image", imageUrls.get(0));
@@ -282,13 +278,15 @@ public class ProductAddActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
         productMap.put("price", Price);
-        productMap.put("model", car_nameS);
+        productMap.put("model", car_model);
         productMap.put("userId" , userId);
         productMap.put("car_kuzov", car_kuzovS);
         productMap.put("car_motor", car_motorS);
         productMap.put("car_year", car_yearS);
         productMap.put("car_bublik", car_bublikS);
         productMap.put("car_mark", car_markS);
+        productMap.put("User Contacts", userContacts);
+        productMap.put("User dop Contacts", dop_contacts);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -349,6 +347,7 @@ public class ProductAddActivity extends AppCompatActivity {
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);
+        dop_contacts = findViewById(R.id.product_contact_add);
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference().child("product_images"); // "product_images" - это путь, по которому будут сохраняться изображения

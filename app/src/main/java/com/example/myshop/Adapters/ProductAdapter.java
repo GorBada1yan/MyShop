@@ -28,6 +28,7 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<Products, ProductVie
         holder.txtProductModel.setText(model.getCar_name());
         holder.txtProductPrice.setText("Цена: " + model.getPrice() + "$");
         Picasso.get().load(model.getImage()).into(holder.imageView);
+
     }
 
     @NonNull

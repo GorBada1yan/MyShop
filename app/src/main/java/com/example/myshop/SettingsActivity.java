@@ -35,21 +35,16 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
-
     private CircleImageView account_image;
     private TextView fullname, semail, sphone;
     private TextView editProfile, close;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
         semail = findViewById(R.id.email_settings);
@@ -66,12 +61,10 @@ public class SettingsActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(ProductsRef, Products.class).build();
         FirebaseRecyclerAdapter<Products, CarViewHolder> adapter = new FirebaseRecyclerAdapter<Products, CarViewHolder>(options) {
-
             @Override
             protected void onBindViewHolder(@NonNull CarViewHolder holder, int position, @NonNull Products model) {
                 int reversedPosition = getItemCount() - position - 1;
                 Products reversedModel = getItem(reversedPosition);
-
                 holder.txtProductName.setText(model.getCar_mark());
                 holder.txtProductModel.setText(model.getCar_name());
                 holder.txtProductPrice.setText("Цена : " + model.getPrice() + "$");
@@ -105,13 +98,11 @@ public class SettingsActivity extends AppCompatActivity {
                 // Устанавливаем имя пользователя в TextView
                 fullname.setText(name);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Обрабатываем ошибку
             }
         });
-
 // Получаем номер телефона пользователя из базы данных
         userRef.child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -127,7 +118,6 @@ public class SettingsActivity extends AppCompatActivity {
                 // Обрабатываем ошибку
             }
         });
-
 // Получаем email пользователя из базы данных
         userRef.child("email").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -143,8 +133,6 @@ public class SettingsActivity extends AppCompatActivity {
                 // Обрабатываем ошибку
             }
         });
-
-
 // Получаем ссылку на фотографию пользователя из базы данных
         userRef.child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -156,13 +144,10 @@ public class SettingsActivity extends AppCompatActivity {
                         .load(photoUrl)
                         .into(account_image);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,6 +169,5 @@ public class SettingsActivity extends AppCompatActivity {
         int spanCount = screenWidth / itemWidth;
         return Math.max(spanCount, 1);
     }
-
 }
 
