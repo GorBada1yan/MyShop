@@ -29,12 +29,13 @@ import java.util.List;
 
 public class InfoProdActivity extends AppCompatActivity {
 
-    private TextView info_back,  info_description, info_name, info_price, info_contacts;
+    private TextView info_back,  info_description, info_mark, info_price, info_contacts, info_model;
 
     private FirebaseDatabaseHelper firebaseDatabaseHelper;
     private RecyclerView photoRecyclerView;
     private PhotoAdapter photoAdapter;
     private DatabaseReference productReference;
+    private  String userContacts;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,9 +44,10 @@ public class InfoProdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_prod);
         info_back = findViewById(R.id.info_back);
         info_description = findViewById(R.id.info_description);
-        info_name = findViewById(R.id.info_name);
+        info_mark = findViewById(R.id.info_name);
         info_price = findViewById(R.id.info_price);
         info_contacts = findViewById(R.id.info_contacts);
+        info_model=findViewById(R.id.info_model);
 
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
@@ -70,27 +72,32 @@ public class InfoProdActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    // Обработка ошибок при чтении из Firebase Database
                 }
             });
         }
 
-
-
-        // Получение информации о продукте из Firebase по id
         if (productId != null && firebaseDatabaseHelper != null) {
             firebaseDatabaseHelper.getProductById(productId, new FirebaseCallback() {
                 @Override
                 public void onCallback(Products product) {
                     if (product != null) {
-                        // Установка полученных значений в элементы интерфейса
-                        info_name.setText(product.getCar_mark()+":"+product.getCar_name());
+                        info_mark.setText(product.getCar_mark());
+                        info_model.setText(product.getCar_name());
                         info_price.setText("$"+product.getPrice());
-                        info_description.setText(product.getDescription());
-
-
-
-
+                        info_description.setText("Информация о машине"+"\n"+"\n"+
+                                "Марка:"+product.getCar_mark()+"\n"+
+                                "Модель: "+product.getCar_name()+"\n"+
+                                "Кузов: "+product.getCar_kuzov()+"\n"+
+                                "Год выпуска: "+product.getCar_year()+"\n"+
+                                "Руль: "+product.getCar_bublik()+"\n"+
+                                "Мотор: "+product.getCar_motor()+"\n"+
+                                "Дополнительная информация: "+"\n"+"\n"+
+                                product.getDescription()
+                                );
+                        info_contacts.setText(
+                                "Информация для связи"+"\n"+"\n"+
+                                product.getContacts()+"\n"+
+                                product.getDop_contacts());
                     }
                 }
             });

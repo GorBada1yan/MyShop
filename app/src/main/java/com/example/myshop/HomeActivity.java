@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 holder.txtProductName.setText(model.getCar_mark());
                 holder.txtProductModel.setText(model.getCar_name());
-                holder.txtProductPrice.setText("Цена : "+model.getPrice()+ "$");
+                holder.txtProductPrice.setText("$"+model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.pid = model.getPid();
             }

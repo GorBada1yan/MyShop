@@ -11,17 +11,16 @@ public class Products {
     private String price;
     private String time;
     private String userId;
-    private String categoryRent;
-    private String categorySubTypeofMachine;
-    private String categoryType;
-    private String categoryTypeofMachine;
+
     private String contacts;
     private String date;
     private String description;
     private String image;
-    public Products(){}
+    private String dop_contacts;
 
-    public Products (String pid,String car_bublik,String car_name, String car_kuzov,String car_mark,String car_motor, String car_year,  String price, String time, String userId, String categoryRent, String categorySubTypeofMachine, String categoryType, String categoryTypeofMachine, String contacts, String date, String description, String image){
+    public Products() {}
+
+    public Products(String pid, String car_bublik, String car_name, String car_kuzov, String car_mark, String car_motor, String car_year, String price, String time, String userId, String contacts, String date, String description, String image, String dop_contacts) {
         this.pid = pid;
         this.car_bublik = car_bublik;
         this.car_name = car_name;
@@ -32,14 +31,12 @@ public class Products {
         this.price = price;
         this.time = time;
         this.userId = userId;
-        this.categoryRent = categoryRent;
-        this.categorySubTypeofMachine = categorySubTypeofMachine;
-        this.categoryType = categoryType;
-        this.categoryTypeofMachine = categoryTypeofMachine;
+
         this.contacts = contacts;
         this.date = date;
         this.description = description;
         this.image = image;
+        this.dop_contacts = dop_contacts;
     }
 
     public String getPid() {
@@ -122,37 +119,6 @@ public class Products {
         this.userId = userId;
     }
 
-    public String getCategoryRent() {
-        return categoryRent;
-    }
-
-    public void setCategoryRent(String categoryRent) {
-        this.categoryRent = categoryRent;
-    }
-
-    public String getCategorySubTypeofMachine() {
-        return categorySubTypeofMachine;
-    }
-
-    public void setCategorySubTypeofMachine(String categorySubTypeofMachine) {
-        this.categorySubTypeofMachine = categorySubTypeofMachine;
-    }
-
-    public String getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(String categoryType) {
-        this.categoryType = categoryType;
-    }
-
-    public String getCategoryTypeofMachine() {
-        return categoryTypeofMachine;
-    }
-
-    public void setCategoryTypeofMachine(String categoryTypeofMachine) {
-        this.categoryTypeofMachine = categoryTypeofMachine;
-    }
 
     public String getContacts() {
         return contacts;
@@ -184,5 +150,13 @@ public class Products {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getDop_contacts() {
+        return dop_contacts;
+    }
+
+    public void setDop_contacts(String dop_contacts) {
+        this.dop_contacts = dop_contacts;
     }
 }

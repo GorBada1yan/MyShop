@@ -34,19 +34,21 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+
+
+
+<ScrollView
+    android:layout_below="@+id/Info_Bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/Info_Bar"/>
-
-
-
-
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/info_photo_rec_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/info_price"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
@@ -58,31 +60,43 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:textSize="18sp"
         android:text="Описание товара"
         android:padding="10dp"
+        android:textStyle="bold"
         />
 
     <TextView
         android:id="@+id/info_name"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_below="@+id/Info_Bar"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="10dp"
         android:text="Название продукта"
         android:textColor="@color/primary"
-        android:textSize="30sp"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:id="@+id/info_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Название продукта"
+        android:textColor="@color/primary"
+        android:textSize="25sp"
         android:textStyle="bold|italic" />
     <TextView
         android:id="@+id/info_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
+        android:textSize="20dp"
         android:padding="10dp"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_below="@+id/info_name"
+        android:layout_below="@+id/info_model"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         />
@@ -92,12 +106,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/info_description"
-        android:layout_marginTop="15dp"
         android:padding="10dp"
+        android:textSize="18sp"
         android:text="Contacts"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-
+        android:textStyle="bold"
         />
+    </RelativeLayout>
+</ScrollView>
+
 
 </RelativeLayout>

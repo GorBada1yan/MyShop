@@ -26,8 +26,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -65,8 +68,13 @@ public class ProductAddActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private List<Uri> selectedImages = new ArrayList<>();
-    private String userId = "";
-    private String userContacts = "";
+    private String userId;
+    private String phone;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference usersRef = database.getReference("users");
+
+
+
 
 
     @Override
@@ -78,7 +86,24 @@ public class ProductAddActivity extends AppCompatActivity {
         setupSelectedImagesRecyclerView();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = currentUser.getUid();
-        userContacts = currentUser.getPhoneNumber();
+        String user_Id = userId;
+
+        DatabaseReference userRef = usersRef.child(user_Id);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    phone = dataSnapshot.child("phone").getValue(String.class);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Обработка ошибок, если такие возникнут
+            }
+        });
+
 
 
         productImage.setOnClickListener(new View.OnClickListener() {
@@ -176,8 +201,7 @@ public class ProductAddActivity extends AppCompatActivity {
         Description = product_description_add.getText().toString();
         Price = product_price_add.getText().toString();
         if (selectedImages.isEmpty()) {
-            Toast.makeText(this, "Добавьте изображение машини", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(this, "Добавьте изображение машины", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(Description)){
             Toast.makeText(this, "Добавьте описание", Toast.LENGTH_SHORT).show();
@@ -269,7 +293,6 @@ public class ProductAddActivity extends AppCompatActivity {
     private void saveProductWithImageUrls(List<String> imageUrls) {
         HashMap<String, Object> productMap = new HashMap<>();
 
-        // Add other product information to the HashMap
         String car_model = car_nameS;
         productMap.put("image*", imageUrls);
         productMap.put("pid", productRandomKey);
@@ -285,9 +308,8 @@ public class ProductAddActivity extends AppCompatActivity {
         productMap.put("car_year", car_yearS);
         productMap.put("car_bublik", car_bublikS);
         productMap.put("car_mark", car_markS);
-        productMap.put("User Contacts", userContacts);
-        productMap.put("User dop Contacts", dop_contacts);
-
+        productMap.put("contacts", phone);
+        productMap.put("dop_contacts", dop_contacts.getText().toString());
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -360,9 +382,9 @@ public class ProductAddActivity extends AppCompatActivity {
         adaptermark.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         car_mark.setAdapter(adaptermark);
 
-        ArrayAdapter<CharSequence> adaptername = ArrayAdapter.createFromResource(this, R.array.car_name, android.R.layout.simple_spinner_item);
-        adaptername.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        car_name.setAdapter(adaptername);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.car_name, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        car_name.setAdapter(adapter);
 
 
         ArrayAdapter<CharSequence> adapterbublik = ArrayAdapter.createFromResource(this, R.array.car_bublik, android.R.layout.simple_spinner_item);
@@ -403,7 +425,16 @@ public class ProductAddActivity extends AppCompatActivity {
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         car_name.setAdapter(adapter);
+        car_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                car_nameS = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
     }
-
-
 }
