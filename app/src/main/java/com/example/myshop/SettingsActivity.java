@@ -66,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
                 int reversedPosition = getItemCount() - position - 1;
                 Products reversedModel = getItem(reversedPosition);
                 holder.txtProductName.setText(model.getCar_mark());
-                holder.txtProductModel.setText(model.getCar_name());
+                holder.txtProductModel.setText(model.getModel());
                 holder.txtProductPrice.setText("Цена : " + model.getPrice() + "$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.pid = model.getPid();

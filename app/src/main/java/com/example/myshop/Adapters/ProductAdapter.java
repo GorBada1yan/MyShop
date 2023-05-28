@@ -25,7 +25,7 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<Products, ProductVie
         Products reversedModel = getItem(reversedPosition);
 
         holder.txtProductName.setText(model.getCar_mark());
-        holder.txtProductModel.setText(model.getCar_name());
+        holder.txtProductModel.setText(model.getModel());
         holder.txtProductPrice.setText("Цена: " + model.getPrice() + "$");
         Picasso.get().load(model.getImage()).into(holder.imageView);
 

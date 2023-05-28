@@ -7,7 +7,7 @@ public class Products {
     private String car_mark;
     private String car_motor;
     private String car_year;
-    private String car_name;
+    private String model;
     private String price;
     private String time;
     private String userId;
@@ -20,10 +20,10 @@ public class Products {
 
     public Products() {}
 
-    public Products(String pid, String car_bublik, String car_name, String car_kuzov, String car_mark, String car_motor, String car_year, String price, String time, String userId, String contacts, String date, String description, String image, String dop_contacts) {
+    public Products(String pid, String car_bublik, String model, String car_kuzov, String car_mark, String car_motor, String car_year, String price, String time, String userId, String contacts, String date, String description, String image, String dop_contacts) {
         this.pid = pid;
         this.car_bublik = car_bublik;
-        this.car_name = car_name;
+        this.model = model;
         this.car_kuzov = car_kuzov;
         this.car_mark = car_mark;
         this.car_motor = car_motor;
@@ -31,7 +31,6 @@ public class Products {
         this.price = price;
         this.time = time;
         this.userId = userId;
-
         this.contacts = contacts;
         this.date = date;
         this.description = description;
@@ -47,12 +46,21 @@ public class Products {
         this.pid = pid;
     }
 
-    public String getCar_name() {
-        return car_name;
+//    public String getCar_name() {
+//        return car_name;
+//    }
+//
+//    public void setCar_name(String car_name) {
+//        this.car_name = car_name;
+//    }
+
+
+    public String getModel() {
+        return model;
     }
 
-    public void setCar_name(String car_name) {
-        this.car_name = car_name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getCar_bublik() {

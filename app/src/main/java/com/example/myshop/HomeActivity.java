@@ -146,7 +146,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Products reversedModel = getItem(reversedPosition);
 
                 holder.txtProductName.setText(model.getCar_mark());
-                holder.txtProductModel.setText(model.getCar_name());
+                holder.txtProductModel.setText(model.getModel());
                 holder.txtProductPrice.setText("$"+model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.pid = model.getPid();

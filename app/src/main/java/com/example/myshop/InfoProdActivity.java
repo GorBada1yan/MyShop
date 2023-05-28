@@ -82,11 +82,11 @@ public class InfoProdActivity extends AppCompatActivity {
                 public void onCallback(Products product) {
                     if (product != null) {
                         info_mark.setText(product.getCar_mark());
-                        info_model.setText(product.getCar_name());
+                        info_model.setText(product.getModel());
                         info_price.setText("$"+product.getPrice());
                         info_description.setText("Информация о машине"+"\n"+"\n"+
                                 "Марка:"+product.getCar_mark()+"\n"+
-                                "Модель: "+product.getCar_name()+"\n"+
+                                "Модель: "+product.getModel()+"\n"+
                                 "Кузов: "+product.getCar_kuzov()+"\n"+
                                 "Год выпуска: "+product.getCar_year()+"\n"+
                                 "Руль: "+product.getCar_bublik()+"\n"+
