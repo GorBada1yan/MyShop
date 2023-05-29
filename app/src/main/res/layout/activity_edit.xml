@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditActivity">
+    tools:context=".UserProductActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/Info_Bar"
         android:layout_width="match_parent"
@@ -27,11 +27,11 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/info_edit"
+                android:id="@+id/info_delate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="Изменить"
+                android:text="Удалить"
                 android:padding="10dp"
                 android:textSize="20dp"
                 android:textColor="@color/white"

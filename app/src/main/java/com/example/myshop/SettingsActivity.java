@@ -111,7 +111,6 @@
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String phone = dataSnapshot.getValue(String.class);
-
                     // Устанавливаем номер телефона пользователя в TextView
                     sphone.setText(phone);
                 }
@@ -126,7 +125,6 @@
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String email = dataSnapshot.getValue(String.class);
-
                     // Устанавливаем email пользователя в TextView
                     semail.setText(email);
                 }

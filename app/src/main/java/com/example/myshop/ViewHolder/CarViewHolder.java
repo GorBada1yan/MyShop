@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myshop.InfoProdActivity;
 import com.example.myshop.Interface.ItemClickListner;
 import com.example.myshop.R;
+import com.example.myshop.UserProductActivity;
 
 public class CarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txtProductName, txtProductPrice, txtProductModel;
@@ -42,7 +43,7 @@ public class CarViewHolder extends RecyclerView.ViewHolder implements View.OnCli
     public void onClick(View view) {
         if (view.getId() == imageView.getId()) {
             // Uri imageUri = getImageUri();
-            Intent intent = new Intent(view.getContext(), InfoProdActivity.class);
+            Intent intent = new Intent(view.getContext(), UserProductActivity.class);
             intent.putExtra("productId", pid);
             view.getContext().startActivity(intent);
         } else {

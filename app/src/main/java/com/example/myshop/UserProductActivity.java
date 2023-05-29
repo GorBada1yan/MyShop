@@ -22,33 +22,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditActivity extends AppCompatActivity {
-    private TextView info_back, info_edit, info_description, info_mark, info_price, info_contacts, info_model;
+public class UserProductActivity extends AppCompatActivity {
+    private TextView info_back, info_delate, info_description, info_mark, info_price, info_contacts, info_model;
 
     private FirebaseDatabaseHelper firebaseDatabaseHelper;
     private RecyclerView photoRecyclerView;
     private PhotoAdapter photoAdapter;
     private DatabaseReference productReference;
     private String userContacts;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         info_back = findViewById(R.id.info_back);
-        info_edit = findViewById(R.id.info_edit);
+        info_delate = findViewById(R.id.info_delate);
         info_description = findViewById(R.id.info_description);
         info_mark = findViewById(R.id.info_name);
         info_price = findViewById(R.id.info_price);
         info_contacts = findViewById(R.id.info_contacts);
         info_model = findViewById(R.id.info_model);
-
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
         FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper(FirebaseDatabase.getInstance());
         photoRecyclerView = findViewById(R.id.info_photo_rec_view);
         photoRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
         productReference = FirebaseDatabase.getInstance().getReference().child("Products");
         if (productId != null) {
             productReference.child(productId).child("image*").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -64,13 +61,11 @@ public class EditActivity extends AppCompatActivity {
                     photoAdapter = new PhotoAdapter(photoUrls);
                     photoRecyclerView.setAdapter(photoAdapter);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
         }
-
         if (productId != null && firebaseDatabaseHelper != null) {
             firebaseDatabaseHelper.getProductById(productId, new FirebaseCallback() {
                 @Override
@@ -100,17 +95,19 @@ public class EditActivity extends AppCompatActivity {
         info_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent infoback = new Intent(EditActivity.this, SettingsActivity.class);
+                Intent infoback = new Intent(UserProductActivity.this, SettingsActivity.class);
                 startActivity(infoback);
             }
         });
-        info_edit.setOnClickListener(new View.OnClickListener() {
+        info_delate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent infoedit = new Intent(EditActivity.this, EditActivity.class);
+                String productId = getIntent().getStringExtra("productId");
+                DatabaseReference productReference = FirebaseDatabase.getInstance().getReference().child("Products").child(productId);
+                productReference.removeValue();
+                Intent infoedit = new Intent(UserProductActivity.this, SettingsActivity.class);
                 startActivity(infoedit);
             }
         });
-
     }
 }
