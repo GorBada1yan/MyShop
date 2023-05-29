@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/Info_Bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/primary"
+        android:theme="@style/Theme.MyShop.AppBarOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/info_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Назад"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/info_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Изменить"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+    <ScrollView
+        android:layout_below="@+id/Info_Bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/info_photo_rec_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/info_price"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/info_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info_photo_rec_view"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:text="Описание товара"
+                android:padding="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/info_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Название продукта"
+                android:textColor="@color/primary"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" />
+            <TextView
+                android:id="@+id/info_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Название продукта"
+                android:textColor="@color/primary"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" />
+            <TextView
+                android:id="@+id/info_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="20dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/info_model"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:id="@+id/info_contacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/info_description"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:text="Contacts"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
