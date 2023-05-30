@@ -62,7 +62,6 @@
 
             FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                     .setQuery(ProductsRef.orderByChild("userId").equalTo(currentUser.getUid()), Products.class).build();
-
             FirebaseRecyclerAdapter<Products, CarViewHolder> adapter = new FirebaseRecyclerAdapter<Products, CarViewHolder>(options) {
                 @Override
                 protected void onBindViewHolder(@NonNull CarViewHolder holder, int position, @NonNull Products model) {
@@ -82,7 +81,6 @@
                 public int getItemCount() {
                     return super.getItemCount();
                 }
-
                 @NonNull
                 @Override
                 public CarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -97,50 +95,38 @@
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String name = dataSnapshot.getValue(String.class);
-
-                    // Устанавливаем имя пользователя в TextView
                     fullname.setText(name);
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Обрабатываем ошибку
                 }
             });
-    // Получаем номер телефона пользователя из базы данных
             userRef.child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String phone = dataSnapshot.getValue(String.class);
-                    // Устанавливаем номер телефона пользователя в TextView
                     sphone.setText(phone);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Обрабатываем ошибку
                 }
             });
-    // Получаем email пользователя из базы данных
             userRef.child("email").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String email = dataSnapshot.getValue(String.class);
-                    // Устанавливаем email пользователя в TextView
                     semail.setText(email);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Обрабатываем ошибку
                 }
             });
-    // Получаем ссылку на фотографию пользователя из базы данных
             userRef.child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String photoUrl = dataSnapshot.getValue(String.class);
-
-                    // Загружаем фотографию пользователя с помощью Glide
                     Glide.with(SettingsActivity.this)
                             .load(photoUrl)
                             .into(account_image);

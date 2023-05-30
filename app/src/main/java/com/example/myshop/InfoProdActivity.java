@@ -7,16 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.myshop.Adapters.PhotoAdapter;
 import com.example.myshop.Interface.FirebaseCallback;
+import com.example.myshop.Model.FirebaseDatabaseHelper;
 import com.example.myshop.Model.Products;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +26,7 @@ import java.util.List;
 
 public class InfoProdActivity extends AppCompatActivity {
 
-    private TextView info_back,  info_description, info_mark, info_price, info_contacts, info_model;
+    private TextView info_back,  info_description, info_mark, info_price, info_contacts;
 
     private FirebaseDatabaseHelper firebaseDatabaseHelper;
     private RecyclerView photoRecyclerView;
@@ -47,7 +44,7 @@ public class InfoProdActivity extends AppCompatActivity {
         info_mark = findViewById(R.id.info_name);
         info_price = findViewById(R.id.info_price);
         info_contacts = findViewById(R.id.info_contacts);
-        info_model=findViewById(R.id.info_model);
+
 
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
@@ -81,21 +78,18 @@ public class InfoProdActivity extends AppCompatActivity {
                 @Override
                 public void onCallback(Products product) {
                     if (product != null) {
-                        info_mark.setText(product.getCar_mark());
-                        info_model.setText(product.getModel());
+                        info_mark.setText(product.getCar_mark()+"  "+product.getModel());
                         info_price.setText("$"+product.getPrice());
-                        info_description.setText("Информация о машине"+"\n"+"\n"+
-                                "Марка:"+product.getCar_mark()+"\n"+
-                                "Модель: "+product.getModel()+"\n"+
-                                "Кузов: "+product.getCar_kuzov()+"\n"+
-                                "Год выпуска: "+product.getCar_year()+"\n"+
-                                "Руль: "+product.getCar_bublik()+"\n"+
-                                "Мотор: "+product.getCar_motor()+"\n"+
-                                "Дополнительная информация: "+"\n"+"\n"+
-                                product.getDescription()
+                        info_description.setText(
+                                "Марка:........."+product.getCar_mark()+"\n"+"\n"+
+                                "Модель:........"+product.getModel()+"\n"+"\n"+
+                                "Кузов:........."+product.getCar_kuzov()+"\n"+"\n"+
+                                "Год выпуска:..."+product.getCar_year()+"\n"+"\n"+
+                                "Руль:.........."+product.getCar_bublik()+"\n"+"\n"+
+                                "Мотор:........."+product.getCar_motor()+"\n"+"\n"+
+                                "Дополнительная информация: "+ product.getDescription()
                                 );
                         info_contacts.setText(
-                                "Информация для связи"+"\n"+"\n"+
                                 product.getContacts()+"\n"+
                                 product.getDop_contacts());
                     }

@@ -52,12 +52,26 @@
         android:layout_below="@+id/info_price"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        <TextView
+            android:id="@+id/info_descriptionx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_photo_rec_view"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:text="Информация о машине"
+            android:textColor="@color/primary"
+            android:padding="10dp"
+            android:textStyle="bold"
+            />
     <TextView
         android:id="@+id/info_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/info_photo_rec_view"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/info_descriptionx"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:textSize="18sp"
@@ -74,38 +88,41 @@
         android:layout_marginRight="10dp"
         android:text="Название продукта"
         android:textColor="@color/primary"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic" />
-    <TextView
-        android:id="@+id/info_model"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info_name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Название продукта"
-        android:textColor="@color/primary"
-        android:textSize="25sp"
-        android:textStyle="bold|italic" />
+
     <TextView
         android:id="@+id/info_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:padding="10dp"
         android:textStyle="bold"
-        android:layout_below="@+id/info_model"
+        android:layout_below="@+id/info_name"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         />
 
+        <TextView
+            android:id="@+id/info_contactsx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/info_description"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primary"
+            android:text="Контакты продавца"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            />
     <TextView
         android:id="@+id/info_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/info_description"
+        android:layout_below="@id/info_contactsx"
         android:padding="10dp"
         android:textSize="18sp"
         android:text="Contacts"
