@@ -45,16 +45,6 @@ public class Products {
     public void setPid(String pid) {
         this.pid = pid;
     }
-
-//    public String getCar_name() {
-//        return car_name;
-//    }
-//
-//    public void setCar_name(String car_name) {
-//        this.car_name = car_name;
-//    }
-
-
     public String getModel() {
         return model;
     }

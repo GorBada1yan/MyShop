@@ -70,7 +70,7 @@ private MaterialCheckBox checkBoxRememberMe;
             }
         });
 
-        // Устанавливаем сохраненное значение в CheckBox при запуске приложения
+
         isChecked = preferences.getBoolean("rememberMe", false);
         checkBoxRememberMe.setChecked(isChecked);
 
