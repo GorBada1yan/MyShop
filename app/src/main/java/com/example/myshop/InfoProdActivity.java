@@ -30,6 +30,7 @@ public class InfoProdActivity extends AppCompatActivity {
 
     private FirebaseDatabaseHelper firebaseDatabaseHelper;
     private RecyclerView photoRecyclerView;
+    private TextView infoDescriptionDop;
     private PhotoAdapter photoAdapter;
     private DatabaseReference productReference;
     private  String userContacts;
@@ -44,6 +45,7 @@ public class InfoProdActivity extends AppCompatActivity {
         info_mark = findViewById(R.id.info_name);
         info_price = findViewById(R.id.info_price);
         info_contacts = findViewById(R.id.info_contacts);
+        infoDescriptionDop= findViewById(R.id.info_description_dop);
 
 
         Intent intent = getIntent();
@@ -81,17 +83,19 @@ public class InfoProdActivity extends AppCompatActivity {
                         info_mark.setText(product.getCar_mark()+"  "+product.getModel());
                         info_price.setText("$"+product.getPrice());
                         info_description.setText(
-                                "Марка:........."+product.getCar_mark()+"\n"+"\n"+
-                                "Модель:........"+product.getModel()+"\n"+"\n"+
-                                "Кузов:........."+product.getCar_kuzov()+"\n"+"\n"+
-                                "Год выпуска:..."+product.getCar_year()+"\n"+"\n"+
-                                "Руль:.........."+product.getCar_bublik()+"\n"+"\n"+
-                                "Мотор:........."+product.getCar_motor()+"\n"+"\n"+
-                                "Дополнительная информация: "+ product.getDescription()
+                                product.getCar_mark()+"\n"+"\n"+
+                                product.getModel()+"\n"+"\n"+
+                                product.getCar_kuzov()+"\n"+"\n"+
+                                product.getCar_year()+"\n"+"\n"+
+                                product.getCar_bublik()+"\n"+"\n"+
+                                product.getCar_motor()+"\n"+"\n"
                                 );
                         info_contacts.setText(
                                 product.getContacts()+"\n"+
                                 product.getDop_contacts());
+                        infoDescriptionDop.setText(
+                                product.getDescription()
+                        );
                     }
                 }
             });
