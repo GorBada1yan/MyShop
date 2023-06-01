@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/Info_Bar"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="@color/primary"
         android:theme="@style/Theme.MyShop.AppBarOverlay">
 
@@ -47,7 +47,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/info_photo_rec_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="260dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/info_price"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -79,7 +79,33 @@
         android:padding="10dp"
         android:textStyle="bold"
         />
-
+        <TextView
+            android:id="@+id/info_description_dopx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_description"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:text="Дополнительная информация о машине"
+            android:textColor="@color/primary"
+            android:padding="10dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/info_description_dop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_description_dopx"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:text="Описание товара"
+            android:padding="10dp"
+            android:textStyle="bold"
+            />
     <TextView
         android:id="@+id/info_name"
         android:layout_width="wrap_content"
@@ -108,9 +134,10 @@
             android:id="@+id/info_contactsx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/info_description"
+            android:layout_below="@id/info_description_dop"
             android:padding="10dp"
             android:textSize="20sp"
+            android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/primary"
             android:text="Контакты продавца"

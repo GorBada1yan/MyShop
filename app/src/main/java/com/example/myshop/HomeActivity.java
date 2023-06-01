@@ -382,18 +382,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (!car_yearS.equals("Год выпуска*")) {
             searchRef = searchRef.orderByChild("car_year").equalTo(car_yearS);
         }
-
-
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(searchRef, Products.class)
                 .build();
-
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                 int reversedPosition = getItemCount() - position - 1;
                 Products reversedModel = getItem(reversedPosition);
-
                 holder.txtProductName.setText(model.getCar_mark());
                 holder.txtProductModel.setText(model.getModel());
                 holder.txtProductPrice.setText("$"+model.getPrice());
@@ -417,7 +413,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
