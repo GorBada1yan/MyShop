@@ -25,7 +25,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView   
+        <TextView
             android:id="@+id/product_model"
             android:layout_width="@dimen/product_item_width"
             android:layout_height="30dp"

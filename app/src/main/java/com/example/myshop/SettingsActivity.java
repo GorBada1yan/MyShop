@@ -127,9 +127,11 @@
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String photoUrl = dataSnapshot.getValue(String.class);
+                    if (photoUrl != null){
                     Glide.with(SettingsActivity.this)
                             .load(photoUrl)
                             .into(account_image);
+                    }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {

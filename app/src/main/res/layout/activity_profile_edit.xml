@@ -40,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Сохранить"
+                    android:layout_marginEnd="10dp"
                     android:padding="10dp"
                     android:textSize="20sp"
                     android:textColor="@color/white"
@@ -90,8 +91,19 @@
         android:hint="Изменить имя"
         android:layout_below="@+id/account_image_edit"
         android:padding="20dp"
+        android:layout_toEndOf="@+id/phone_txt"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
+        <TextView
+            android:id="@+id/name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/account_image_edit"
+            android:padding="20dp"
+            android:text="Имя"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     <EditText
         android:id="@+id/phone_edit"
@@ -101,8 +113,20 @@
         android:layout_below="@+id/fullname_edit"
         android:layout_marginTop="10dp"
         android:padding="20dp"
+        android:layout_toEndOf="@+id/phone_txt"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
+        <TextView
+            android:id="@+id/phone_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/name_txt"
+            android:padding="20dp"
+            android:text="Номер телефона"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </ScrollView>
 

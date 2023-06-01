@@ -99,9 +99,6 @@ public class ProfileEditActivity extends AppCompatActivity {
                 });
             }
         });
-
-
-
         userRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,11 +133,11 @@ public class ProfileEditActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String photoUrl = dataSnapshot.getValue(String.class);
-
-                // Загружаем фотографию пользователя с помощью Glide
+                if (photoUrl != null){
                 Glide.with(ProfileEditActivity.this)
                         .load(photoUrl)
                         .into(account_image_edit);
+                }
             }
 
             @Override

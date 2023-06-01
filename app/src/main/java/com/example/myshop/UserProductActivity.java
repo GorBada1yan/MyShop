@@ -34,7 +34,7 @@ public class UserProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_user_product);
         info_back = findViewById(R.id.info_back);
         info_delate = findViewById(R.id.info_delate);
         info_description = findViewById(R.id.info_description);

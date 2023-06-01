@@ -273,17 +273,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.cart){
-
-        } else if(id == R.id.add){
-            Intent addIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
-            startActivity(addIntent);
-
-        } else if(id == R.id.categories){
-            Intent catIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
-            startActivity(catIntent);
-
-        } else if(id == R.id.settings){
+         if(id == R.id.settings){
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
             finish();
