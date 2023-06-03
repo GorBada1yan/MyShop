@@ -273,7 +273,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-         if(id == R.id.settings){
+        if(id == R.id.settings){
             Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
         } else if(id == R.id.logout){
@@ -281,10 +281,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent loginIntent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(loginIntent);
         }else if(id == R.id.add){
-             Paper.book().destroy();
-             Intent loginIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
-             startActivity(loginIntent);
-         }
+            Paper.book().destroy();
+            Intent loginIntent = new Intent(HomeActivity.this, ProductAddActivity.class);
+            startActivity(loginIntent);
+        }
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
@@ -292,9 +292,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     private int calculateSpanCount() {
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width); // Замените R.dimen.product_item_width на ваш ресурс ширины элемента продукта
+        int itemWidth = getResources().getDimensionPixelSize(R.dimen.product_item_width_);
         int spanCount = screenWidth / itemWidth;
-        return Math.max(spanCount, 1); // Устанавливаем минимальное значение столбцов как 1
+        return Math.max(spanCount, 1);
     }
     private void init(){
         ArrayAdapter<CharSequence> adaptermark = ArrayAdapter.createFromResource(this, R.array.car_mark, android.R.layout.simple_spinner_item);
