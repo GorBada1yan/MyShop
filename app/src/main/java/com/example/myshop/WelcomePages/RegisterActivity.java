@@ -79,9 +79,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(check)){
                     passcheck.setError("Введите пароль повторно");
+                    return;
                 }
-                if (check != password){
-                    passcheck.setError("Введенные пароли должны быть одинаковыми ");
+                if (!check.equals(password)){
+                    passcheck.setError("Введенные пароли не соответствуют друг другу");
+                    return;
                 }
 
                 mAuth.createUserWithEmailAndPassword(email, password)

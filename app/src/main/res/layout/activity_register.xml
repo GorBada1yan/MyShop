@@ -10,20 +10,29 @@
 
     <ImageView
         android:id="@+id/applogo"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:src="@drawable/applogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        ></ImageView>
-
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="75dp"
+        android:minWidth="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/applogo"></ImageView>
+<RelativeLayout
+    android:id="@+id/rel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true">
 
     <EditText
         android:id="@+id/register_username_input"
         style="@style/TextAppearance.Material3.BodyLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/applogo"
+
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
@@ -115,7 +124,7 @@
         style="@style/TextAppearance.Material3.BodyLarge"
 
         ></EditText>
-
+</RelativeLayout>
 
 
 
@@ -123,7 +132,6 @@
         android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/register_password_check"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="73dp"
         android:layout_marginRight="20dp"
@@ -131,7 +139,8 @@
         android:padding="15dp"
         android:text="Регистрация"
         android:textColor="@color/white"
-
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:textSize="25sp"></Button>
 
 

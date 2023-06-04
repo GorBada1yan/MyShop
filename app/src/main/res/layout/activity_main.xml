@@ -10,14 +10,16 @@
 
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:src="@drawable/applogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-
-
-        ></ImageView>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="75dp"
+        android:minWidth="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/applogo"></ImageView>
 
     <TextView
         android:id="@+id/app_slogan"
