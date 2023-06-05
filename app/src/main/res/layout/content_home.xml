@@ -78,6 +78,7 @@
         android:id="@+id/recycler_menu"
         android:layout_below="@+id/cat_scroll"
         android:layout_width="wrap_content"
+        android:minWidth="200dp"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         >
