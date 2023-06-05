@@ -47,7 +47,6 @@
             setContentView(R.layout.activity_settings);
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
-
             semail = findViewById(R.id.email_settings);
             sphone=findViewById(R.id.phone_settings);
             account_image=findViewById(R.id.account_image_settings);
@@ -59,7 +58,6 @@
             recyclerView.setLayoutManager(layoutManager);
             close=findViewById(R.id.close_setting);
             editProfile = findViewById(R.id.edit_settings);
-
             FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                     .setQuery(ProductsRef.orderByChild("userId").equalTo(currentUser.getUid()), Products.class).build();
             FirebaseRecyclerAdapter<Products, CarViewHolder> adapter = new FirebaseRecyclerAdapter<Products, CarViewHolder>(options) {

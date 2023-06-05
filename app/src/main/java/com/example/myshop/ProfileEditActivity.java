@@ -125,7 +125,6 @@ public class ProfileEditActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Обрабатываем ошибку
             }
         });
 
@@ -185,20 +184,8 @@ public class ProfileEditActivity extends AppCompatActivity {
                         });
                     })
                     .addOnFailureListener(e -> {
-                        // Handle the error
                     });
-
-
         }
-
-
-
-
-
-
-
-
-
     }
     private void init(){
         mAuth = FirebaseAuth.getInstance();
