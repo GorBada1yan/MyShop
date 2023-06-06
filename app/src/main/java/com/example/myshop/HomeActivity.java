@@ -355,21 +355,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     private void searchProducts() {
         searchRef = FirebaseDatabase.getInstance().getReference().child("Products");
-        if (!car_markS.equals("Марка*")) {
-            searchRef = searchRef.orderByChild("car_mark").equalTo(car_markS);
-        }
+
         if (!car_nameS.equals("Модель*")) {
             searchRef = searchRef.orderByChild("model").equalTo(car_nameS);
-        }
+        }else if (!car_markS.equals("Марка*")) {
+            searchRef = searchRef.orderByChild("car_mark").equalTo(car_markS);
+        }else
         if (!car_kuzovS.equals("Тип кузова*")) {
             searchRef = searchRef.orderByChild("car_kuzov").equalTo(car_kuzovS);
-        }
+        }else
         if (!car_bublikS.equals("Руль*")) {
             searchRef = searchRef.orderByChild("car_bublik").equalTo(car_bublikS);
-        }
+        }else
         if (!car_motorS.equals("Мотор*")) {
             searchRef = searchRef.orderByChild("car_motor").equalTo(car_motorS);
-        }
+        }else
         if (!car_yearS.equals("Год выпуска*")) {
             searchRef = searchRef.orderByChild("car_year").equalTo(car_yearS);
         }
